@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes from Sean Baugh</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="m-nav">
+  <span class="m-nav-logo">Notes from Sean Baugh</span>
+  <div class="m-nav-divider"></div>
+  <span class="m-nav-tagline">Music, ideas, and the work between the notes.</span>
+  <div class="m-nav-right">
+    <a href="#feed" class="m-nav-link">Stories</a>
+    <a href="#feed" class="m-nav-cta">Start reading</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="m-hero">
+  <div class="m-hero-bg"></div>
+  <div class="m-hero-inner">
+    <div class="m-hero-eyebrow">Notes from a conductor</div>
+    <h1 class="m-hero-title">Stay <em>curious.</em></h1>
+    <p class="m-hero-subtitle">Dispatches from a professional musician and conductor — on craft, creativity, collaboration, and what happens when you really listen.</p>
+    <div class="m-hero-cta-row">
+      <a href="#feed" class="m-hero-cta">Start reading</a>
+      <a href="#feed" class="m-hero-cta-ghost">Browse stories</a>
+    </div>
+  </div>
+  <div class="m-hero-scroll">scroll</div>
+</section>
+
+<!-- DIAGONAL STRIPE BAND -->
+<div class="m-band-stripe"></div>
+
+<!-- TOPIC PILLS -->
+<div class="m-topics" id="topic-bar">
+  <button class="m-topic-pill active" data-filter="all">All stories</button>
+  <button class="m-topic-pill" data-filter="ai">AI</button>
+  <button class="m-topic-pill" data-filter="creativity">Creativity</button>
+  <button class="m-topic-pill" data-filter="design">Design</button>
+  <button class="m-topic-pill" data-filter="ttbb">TTBB</button>
+  <button class="m-topic-pill" data-filter="web">Web</button>
+</div>
+
+<!-- FEED + SIDEBAR -->
+<div class="m-feed-wrapper">
+  <main class="m-layout" id="feed">
+
+    <div class="m-feed">
+
+      <!-- Featured article -->
+      <a href="pages/ttbb-wiki.html" class="m-article featured m-filter-card" data-tags="ttbb">
+        <div class="m-article-thumb">
+          <div class="m-article-thumb-placeholder">🎵</div>
+        </div>
+        <div class="m-article-body">
+          <div class="m-article-author-row">
+            <div class="m-author-avatar">SB</div>
+            <span class="m-author-name">Sean Baugh</span>
+          </div>
+          <div class="m-article-title">TTBB Wiki</div>
+          <div class="m-article-excerpt">A comprehensive reference for tenor-bass choral repertoire — voicings, editions, programming ideas, and notes from the podium.</div>
+          <div class="m-article-meta">
+            <span class="m-article-tag">TTBB</span>
+            <span>Apr 24</span>
+            <span>·</span>
+            <span>5 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Standard article -->
+      <a href="pages/my-second-brain-creative-adventure.html" class="m-article m-filter-card" data-tags="ai creativity">
+        <div class="m-article-body">
+          <div class="m-article-author-row">
+            <div class="m-author-avatar">SB</div>
+            <span class="m-author-name">Sean Baugh</span>
+          </div>
+          <div class="m-article-title">My Second Brain Creative Adventure</div>
+          <div class="m-article-excerpt">How Obsidian and Claude clicked together to transform the way I research repertoire and think about my creative work.</div>
+          <div class="m-article-meta">
+            <span class="m-article-tag">AI</span>
+            <span class="m-article-tag">Creativity</span>
+            <span>Apr 2026</span>
+            <span>·</span>
+            <span>4 min read</span>
+          </div>
+        </div>
+        <div class="m-article-thumb">
+          <div class="m-article-thumb-placeholder">🧠</div>
+        </div>
+      </a>
+
+      <!-- Standard article -->
+      <a href="pages/my-first-project.html" class="m-article m-filter-card" data-tags="design web">
+        <div class="m-article-body">
+          <div class="m-article-author-row">
+            <div class="m-author-avatar">SB</div>
+            <span class="m-author-name">Sean Baugh</span>
+          </div>
+          <div class="m-article-title">My First Project</div>
+          <div class="m-article-excerpt">Where it all started — the design decisions, the web work, and what I'd do differently now.</div>
+          <div class="m-article-meta">
+            <span class="m-article-tag">Design</span>
+            <span class="m-article-tag">Web</span>
+            <span>Apr 2026</span>
+            <span>·</span>
+            <span>3 min read</span>
+          </div>
+        </div>
+        <div class="m-article-thumb">
+          <div class="m-article-thumb-placeholder">🖥️</div>
+        </div>
+      </a>
+
+    </div><!-- /m-feed -->
+
+    <!-- SIDEBAR -->
+    <aside class="m-sidebar">
+
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">About the author</div>
+        <div class="m-sidebar-author">
+          <div class="m-sidebar-avatar">SB</div>
+          <div><div class="m-sidebar-author-name">Sean Baugh</div></div>
+        </div>
+        <p class="m-sidebar-author-bio">Professional musician and conductor. Writing about choral music, performance practice, creativity, and the small details that make everything else possible.</p>
+      </div>
+
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">Topics</div>
+        <div class="m-sidebar-topics">
+          <span class="m-sidebar-topic">Choral Music</span>
+          <span class="m-sidebar-topic">Conducting</span>
+          <span class="m-sidebar-topic">TTBB</span>
+          <span class="m-sidebar-topic">Design</span>
+          <span class="m-sidebar-topic">Web</span>
+          <span class="m-sidebar-topic">Creativity</span>
+        </div>
+      </div>
+
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">More from Sean Baugh</div>
+        <a href="pages/ttbb-wiki.html" class="m-sidebar-article">
+          <div class="m-sidebar-num">01</div>
+          <div>
+            <div class="m-sidebar-article-title">TTBB Wiki</div>
+            <div class="m-sidebar-article-meta">5 min read · TTBB</div>
+          </div>
+        </a>
+        <a href="pages/my-second-brain-creative-adventure.html" class="m-sidebar-article">
+          <div class="m-sidebar-num">02</div>
+          <div>
+            <div class="m-sidebar-article-title">My Second Brain Creative Adventure</div>
+            <div class="m-sidebar-article-meta">4 min read · AI · Creativity</div>
+          </div>
+        </a>
+        <a href="pages/my-first-project.html" class="m-sidebar-article">
+          <div class="m-sidebar-num">03</div>
+          <div>
+            <div class="m-sidebar-article-title">My First Project</div>
+            <div class="m-sidebar-article-meta">3 min read · Design · Web</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="m-sidebar-section">
+        <p class="m-sidebar-quote">"The details are not the details. They make the design."</p>
+      </div>
+
+    </aside>
+
+  </main>
+</div><!-- /m-feed-wrapper -->
+
+<!-- CROSSHATCH QUOTE SECTION -->
+<section class="m-section-crosshatch">
+  <div class="m-section-crosshatch-inner">
+    <blockquote>"The details are not the details.<br>They make the design."</blockquote>
+    <cite>— Charles Eames</cite>
+  </div>
+</section>
+
+<!-- CHEVRON BAND -->
+<div class="m-band-chevron"></div>
+
+<!-- FOOTER -->
+<footer class="m-footer">
+  <a href="#" class="m-footer-link">About</a>
+  <a href="#feed" class="m-footer-link">Stories</a>
+  <a href="#" class="m-footer-link">Contact</a>
+  <span class="m-footer-copy">© 2026 Notes from Sean Baugh</span>
+</footer>
+
+<script>
+(function () {
+  var pills = document.querySelectorAll('.m-topic-pill');
+  var cards = document.querySelectorAll('.m-filter-card');
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      var filter = pill.getAttribute('data-filter');
+      cards.forEach(function (card) {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
+          var tags = (card.getAttribute('data-tags') || '').split(' ');
+          card.style.display = tags.includes(filter) ? '' : 'none';
+        }
+      });
+    });
+  });
+}());
+</script>
+
+</body>
+</html>
