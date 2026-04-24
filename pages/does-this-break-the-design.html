@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notes from Sean Baugh</title>
+  <title>Does this break the design? - Notes from Sean Baugh</title>
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body.vf-apple {
@@ -138,87 +138,25 @@ body.vf-apple {
 </head>
 <body class="vf-apple">
 
-<nav class="vf-nav-ap">
-  <div class="vf-nav-ap-logo">Notes from Sean Baugh</div>
-  <div style="display:flex;gap:24px;align-items:center;">
-    <a href="#work" style="color:#0066cc; font-size:14px; font-weight:400;">Work</a>
-  </div>
+<nav class="vf-nav-ap" style="justify-content: center; position: relative;">
+  <a href="../index.html" class="vf-back-ap">&lt; Back</a>
+  <div class="vf-nav-ap-logo">Does this break the design?</div>
 </nav>
 
-<header class="vf-hero-ap">
-  <h1 class="vf-hero-ap-title">Pro. Beyond.</h1>
-  <p class="vf-hero-ap-subtitle">Welcome to my digital portfolio.</p>
+<header class="vf-page-ap-header">
+  <h1 class="vf-page-ap-title">Does this break the design?</h1>
+  <p class="vf-page-ap-meta">Project Showcase</p>
 </header>
 
-<section id="work" class="vf-projects-ap">
-  
-    <div class="vf-filter-bar">
-      <button class="vf-filter-btn active" data-filter="all">All</button>
-      <button class="vf-filter-btn" data-filter="design">design</button><button class="vf-filter-btn" data-filter="ttbb">ttbb</button><button class="vf-filter-btn" data-filter="web">web</button>
-    </div>
-  
-  <div class="vf-projects-ap-grid">
-    
-<a href="pages/does-this-break-the-design.html" class="vf-card-ap vf-filter-card" data-tags="design web">
-  <div class="vf-card-ap-title">Does this break the design?</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">design</span><span class="vf-tag-ap">web</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
-
-<a href="pages/ttbb-wiki.html" class="vf-card-ap vf-filter-card" data-tags="ttbb">
-  <div class="vf-card-ap-title">TTBB Wiki</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">ttbb</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
-
-<a href="pages/my-first-project.html" class="vf-card-ap vf-filter-card" data-tags="design web">
-  <div class="vf-card-ap-title">My First Project</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">design</span><span class="vf-tag-ap">web</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
+<main class="vf-page-ap-content">
+  <div class="vf-prose-ap">
+    <p>A Second note</p>
   </div>
-</section>
+</main>
 
-<section class="vf-quote-ap">
-  <p>&quot;The details are not the details. They make the design.&quot;</p>
-</section>
-
-<footer class="vf-footer-ap">
-  Copyright &copy; 2026 Notes from Sean Baugh. All rights reserved. <br/>
-  Published with VaultFolio.
+<footer class="vf-footer-ap" style="border-top: none; padding-top: 80px;">
+  Copyright &copy; 2026 Notes from Sean Baugh. All rights reserved.
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const filters = document.querySelectorAll(".vf-filter-btn");
-  const cards = document.querySelectorAll(".vf-filter-card");
-  
-  filters.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filters.forEach(f => f.classList.remove("active"));
-      btn.classList.add("active");
-      
-      const tag = btn.getAttribute("data-filter");
-      
-      cards.forEach(card => {
-        if (tag === "all") {
-          card.style.display = "";
-        } else {
-          const cardTags = card.getAttribute("data-tags") || "";
-          const tList = cardTags.split(" ");
-          if (tList.includes(tag)) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
-        }
-      });
-    });
-  });
-});
-</script>
 </body>
 </html>
