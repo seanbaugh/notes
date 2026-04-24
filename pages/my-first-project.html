@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My First Project — Notes from Sean Baugh</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body.vf-editorial {
+  background: #FFFFFF;
+  color: #0A0A0A;
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.vf-editorial a { color: inherit; text-decoration: none; }
+.vf-editorial img { max-width: 100%; height: auto; display: block; margin: 0; }
+.vf-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin: 40px 0; }
+.vf-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.vf-gallery img { margin: 0; aspect-ratio: 3/4; object-fit: cover; border-radius: 0; }
+.vf-image-single { display: flex; justify-content: center; margin: 40px 0; }
+
+/* Navigation */
+.vf-nav-ed {
+  background: #FFFFFF;
+  border-top: 4px solid #0A0A0A;
+  border-bottom: 1px solid #0A0A0A;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vf-nav-ed-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0A0A0A;
+}
+.vf-nav-ed-left, .vf-nav-ed-right {
+  font-size: 14px;
+  font-variant: small-caps;
+}
+
+/* Hero */
+.vf-hero-ed {
+  background: #FFFFFF;
+  padding: 80px 40px 40px;
+}
+.vf-hero-ed-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 10vw, 120px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 0.9;
+  color: #0A0A0A;
+  text-align: left;
+}
+.vf-hero-ed-divider {
+  border-bottom: 3px solid #0A0A0A;
+  margin: 40px 0;
+}
+.vf-hero-ed-cols {
+  display: flex; gap: 40px;
+  justify-content: space-between;
+}
+.vf-hero-ed-bio {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 24px;
+  max-width: 600px;
+}
+.vf-hero-ed-stats {
+  display: flex; gap: 40px;
+}
+.vf-hero-ed-stat {
+  display: flex; flex-direction: column;
+}
+.vf-hero-ed-stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700;
+}
+.vf-hero-ed-stat-lbl {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+/* Projects */
+.vf-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
+.vf-filter-btn { background: transparent; border: 1px solid #0A0A0A; padding: 4px 16px; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; }
+.vf-filter-btn:hover { background: rgba(0,0,0,0.05); }
+.vf-filter-btn.active { background: #0A0A0A; color: #FFFFFF; }
+
+.vf-projects-ed {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.vf-projects-ed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #0A0A0A;
+  border: 1px solid #0A0A0A;
+}
+.vf-card-ed {
+  background: #FFFFFF;
+  display: flex; flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  color: #0A0A0A;
+}
+.vf-card-ed.full { grid-column: 1 / -1; }
+.vf-card-ed-header {
+  padding: 40px;
+  min-height: 300px;
+  display: flex; flex-direction: column;
+  border-radius: 0;
+}
+.vf-card-ed-num {
+  font-size: 14px;
+  margin-bottom: auto;
+}
+.vf-card-ed-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.vf-card-ed-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.vf-card-ed-tags {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+.vf-card-ed-link {
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding-bottom: 2px;
+  align-self: flex-start;
+}
+
+/* Quote */
+.vf-quote-ed {
+  background: #0A0A0A;
+  padding: 80px 40px;
+  text-align: center;
+}
+.vf-quote-ed-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 56px);
+  font-style: italic;
+  color: #FFFFFF;
+}
+
+/* Footer */
+.vf-footer-ed {
+  border-top: 4px solid #0A0A0A;
+  background: #FFFFFF;
+  padding: 80px 40px 40px;
+}
+.vf-footer-ed-cols {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 80px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; color: #555;
+  max-width: 1200px; margin: 0 auto;
+}
+.vf-footer-ed-bottom {
+  text-align: center; font-size: 11px; color: #999;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Project Page */
+.vf-page-ed-header {
+  text-align: center;
+  padding: 80px 40px 40px;
+  border-bottom: 1px solid #0A0A0A;
+  max-width: 1200px; margin: 0 auto;
+}
+.vf-page-ed-issue {
+  font-variant: small-caps; margin-bottom: 24px; color: #555;
+}
+.vf-page-ed-title {
+  font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; line-height: 1.1; margin-bottom: 24px;
+}
+.vf-page-ed-meta { font-size: 18px; font-family: 'DM Sans', sans-serif; }
+
+.vf-page-ed-content {
+  max-width: 680px; margin: 0 auto; padding: 80px 40px;
+}
+.vf-prose-ed p {
+  font-size: 18px; line-height: 1.9; margin: 1.5rem 0;
+}
+.vf-prose-ed p:first-of-type::first-letter {
+  float: left; font-family: 'Playfair Display', serif; font-size: 72px; line-height: 60px;
+  padding-right: 8px; font-weight: 900;
+}
+.vf-prose-ed a {
+  color: #0A0A0A; text-decoration: underline;
+}
+.vf-prose-ed strong {
+  font-weight: 700;
+}
+.vf-prose-ed pre, .vf-prose-ed code {
+  background: #F5F4EF;
+  color: #0A0A0A;
+  border-radius: 4px;
+}
+.vf-prose-ed pre { padding: 16px; overflow-x: auto; font-size: 14px; }
+.vf-prose-ed code { padding: 2px 4px; }
+
+.vf-page-ed-tags { display: flex; gap: 8px; margin-top: 60px; }
+.vf-page-ed-tag { font-variant: small-caps; border: 1px solid #0A0A0A; padding: 4px 12px; font-size: 12px; }
+
+.vf-page-ed-back {
+  position: absolute; top: 40px; left: 40px; font-size: 14px; color: #555; text-decoration: none;
+}
+.vf-page-ed-back:hover { color: #0A0A0A; }
+
+@media (max-width: 768px) {
+  .vf-hero-ed-cols { flex-direction: column; }
+  .vf-projects-ed-grid { grid-template-columns: 1fr; }
+  .vf-footer-ed-cols { grid-template-columns: 1fr; }
+  .vf-page-ed-title { font-size: 48px; }
+  .vf-nav-ed-left, .vf-nav-ed-right { display: none; }
+}
+</style>
+</head>
+<body class="vf-editorial">
+
+<a href="../index.html" class="vf-page-ed-back">&larr; Back to portfolio</a>
+
+<header class="vf-page-ed-header">
+  <div class="vf-page-ed-issue">Feature Project</div>
+  <h1 class="vf-page-ed-title">My First Project</h1>
+  <div class="vf-page-ed-meta">Recent Work</div>
+</header>
+
+<main class="vf-page-ed-content">
+  <div class="vf-prose-ed">
+    
+  </div>
+  <div class="vf-page-ed-tags"><span class="vf-page-ed-tag">design</span><span class="vf-page-ed-tag">web</span></div>
+</main>
+
+</body>
+</html>
