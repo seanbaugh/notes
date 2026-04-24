@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TTBB Wiki - Notes from Sean Baugh</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body.vf-apple {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.vf-apple a { color: inherit; text-decoration: none; }
+.vf-apple img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+
+/* Navigation */
+.vf-nav-ap {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 40px; height: 52px;
+}
+.vf-nav-ap-logo {
+  font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: #1d1d1f;
+}
+
+/* Hero */
+.vf-hero-ap {
+  text-align: center; padding: 120px 40px 80px; max-width: 980px; margin: 0 auto;
+}
+.vf-hero-ap-title {
+  font-size: clamp(48px, 8vw, 80px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.05; color: #1d1d1f; margin-bottom: 24px;
+}
+.vf-hero-ap-subtitle {
+  font-size: 24px; font-weight: 400; color: #86868b; line-height: 1.33337; letter-spacing: .009em; max-width: 680px; margin: 0 auto;
+}
+
+/* Projects */
+.vf-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px; }
+.vf-filter-btn { background: rgba(0,0,0,0.05); color: #1d1d1f; border: none; padding: 8px 16px; border-radius: 100px; font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: inherit; font-weight: 400; }
+.vf-filter-btn:hover { background: rgba(0,0,0,0.1); }
+.vf-filter-btn.active { background: #1d1d1f; color: #fff; font-weight: 500; }
+
+.vf-projects-ap {
+  padding: 40px; max-width: 1200px; margin: 0 auto;
+}
+.vf-projects-ap-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+}
+.vf-card-ap {
+  background: #ffffff; border-radius: 18px; padding: 40px; display: flex; flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0,0,0.5,1), box-shadow 0.2s cubic-bezier(0,0,0.5,1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+.vf-card-ap:hover {
+  transform: scale(1.02); box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+}
+.vf-card-ap-title {
+  font-size: 28px; font-weight: 600; letter-spacing: .004em; color: #1d1d1f; margin-bottom: 12px;
+}
+.vf-card-ap-desc {
+  font-size: 17px; font-weight: 400; color: #86868b; margin-bottom: 24px; line-height: 1.47;
+}
+.vf-card-ap-tags {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.vf-tag-ap {
+  background: #f5f5f7; color: #1d1d1f; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 100px;
+}
+.vf-card-ap-link {
+  margin-top: auto; color: #0066cc; font-size: 17px; font-weight: 400;
+}
+.vf-card-ap-link:hover { text-decoration: underline; }
+
+/* Quote & Footer */
+.vf-quote-ap {
+  text-align: center; padding: 120px 40px; max-width: 800px; margin: 0 auto;
+}
+.vf-quote-ap p {
+  font-size: 32px; font-weight: 600; color: #1d1d1f; line-height: 1.25; letter-spacing: .004em;
+}
+.vf-footer-ap {
+  border-top: 1px solid #d2d2d7; padding: 32px 40px; text-align: center; font-size: 12px; color: #86868b;
+  max-width: 980px; margin: 0 auto;
+}
+
+/* Project Page */
+.vf-page-ap-header {
+  text-align: center; padding: 100px 40px 60px; max-width: 800px; margin: 0 auto;
+}
+.vf-page-ap-title {
+  font-size: 64px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 16px;
+}
+.vf-page-ap-meta {
+  font-size: 17px; color: #86868b; font-weight: 400;
+}
+.vf-page-ap-content {
+  background: #ffffff; padding: 80px 40px; border-radius: 32px 32px 0 0; box-shadow: 0 -4px 24px rgba(0,0,0,0.04);
+}
+.vf-prose-ap {
+  max-width: 680px; margin: 0 auto;
+}
+.vf-prose-ap p {
+  font-size: 19px; line-height: 1.6; color: #1d1d1f; margin-bottom: 1.5rem; font-weight: 400;
+}
+.vf-prose-ap h2, .vf-prose-ap h3 {
+  font-weight: 600; color: #1d1d1f; letter-spacing: .004em; margin-top: 2.5rem; margin-bottom: 1rem;
+}
+.vf-prose-ap h2 { font-size: 32px; }
+.vf-prose-ap h3 { font-size: 24px; }
+.vf-prose-ap a { color: #0066cc; text-decoration: none; }
+.vf-prose-ap a:hover { text-decoration: underline; }
+.vf-prose-ap pre, .vf-prose-ap code {
+  background: #f5f5f7; color: #1d1d1f; border-radius: 8px; font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+}
+.vf-prose-ap pre { padding: 20px; overflow-x: auto; font-size: 14px; margin: 2rem 0; }
+.vf-prose-ap code { padding: 3px 6px; font-size: 0.9em; }
+.vf-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 60px 0; }
+.vf-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.vf-gallery img { margin: 0; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); width: 100%; height: 100%; object-fit: cover; }
+.vf-image-single { display: flex; justify-content: center; margin: 60px 0; }
+.vf-prose-ap blockquote {
+  border-left: 4px solid #d2d2d7; padding-left: 1.5rem; color: #86868b; margin: 2rem 0; font-size: 24px; font-style: italic;
+}
+.vf-prose-ap hr { border: none; border-top: 1px solid #d2d2d7; margin: 3rem 0; }
+
+.vf-back-ap {
+  position: absolute; top: 16px; left: 40px; color: #0066cc; font-size: 14px; font-weight: 400; z-index: 200; display: flex; align-items: center;
+}
+.vf-back-ap:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="vf-apple">
+
+<nav class="vf-nav-ap" style="justify-content: center; position: relative;">
+  <a href="../index.html" class="vf-back-ap">&lt; Back</a>
+  <div class="vf-nav-ap-logo">TTBB Wiki</div>
+</nav>
+
+<header class="vf-page-ap-header">
+  <h1 class="vf-page-ap-title">TTBB Wiki</h1>
+  <p class="vf-page-ap-meta">Project Showcase</p>
+</header>
+
+<main class="vf-page-ap-content">
+  <div class="vf-prose-ap">
+    <h1>Wiki Index</h1></p><p>Catalog of all wiki pages. Updated on every ingest. Read this first when answering queries — use it to identify relevant pages, then drill into them.</p><p><hr></p><p><h2>Pieces</h2></p><p>- [[America the Beautiful (arr. Leavitt)]] — Ward/Bates, arr. John Leavitt, SATB/TTBB; American ideals; separately issued in both voicings
+<p>- [[Ave Maria (Joshua B. Himes)]] — Joshua B. Himes, TTBB/SATB/SSAA; lush homophonic sacred; accessible</p>
+<p>- [[Blood is Blood is Blood]] — TTBB work by PJ Mooney; themes of identity and kinship</p>
+<p>- [[Can We Sing the Darkness to Light]] — Kyle Pederson, TTBB & Piano; peace and compassion; contemporary composition; invites vision of world without war</p>
+<p>- [[Cangia cangia tue voglie]] — early Baroque aria (Fasolo), arr. Tom Shelton for TTB; diction/ornamentation focus; Hinshaw Music</p>
+<p>- [[Deep River]] — Traditional Spiritual (arr. Howard Helvey, others); TTBB; spiritual crossing, liberation; river metaphor; African American traditions</p>
+<p>- [[Do You Hear the People Sing?]] — Schönberg, arr. Ed Lojeski, TTBB; freedom anthem from <em>Les Misérables</em>; multiple voicings available; Hal Leonard</p>
+<p>- [[Does the World Say]] — Kyle Pederson, TB/TTB/TTBB & Piano; empowerment and resilience; flexible voicing; contemporary composition</p>
+<p>- [[An Earth Song]] — Marques L. A. Garrett, TTBB & Piano; Langston Hughes text; celebration of new life and joy; Oakland Gay Men's Chorus commission</p>
+<p>- [[Echo's Histories]] — Dale Trumbore, TTBB; layers with "Echo's Stories" (SSAA) to form composite work</p>
+<p>- [[Esa Einai]] — Kurt Knecht, TTBB; Hebrew Psalm 121; lyrical spiritual</p>
+<p>- [[Every Fire]] — Timothy C. Takach, TTBB; patriotic valor; piano; self-published</p>
+<p>- [[Exsultate Jubilate]] — Kyle Pederson, TTBB & Piano; celebration, gratitude, joy; contemporary composition</p>
+<p>- [[Found Heaven]] — Conan Gray; contemporary pop; queer religious trauma and self-acceptance; considering for Pride As Big As Texas</p>
+<p>- [[Gaudete (Kira Rugen)]] — Kira Rugen arr., TTBB; vivacious carol arrangement; robust</p>
+<p>- [[A Golden Day]] — Patrick Vu; TTBB a cappella; love song, celebration, lyrical; contemporary emerging composer; considering for Women's Voices Queer Strength</p>
+<p>- [[The Green and Salty Days]] — Kathleen Allan, TTBB; Al Pittman poem; memory and deserted place</p>
+<p>- [[Ho Boys Can't Line Em]] — Traditional African American Work Song, arr. Anthony Trecek-King & Leonard De Paur; TTBB a cappella; call-and-response; post-Civil War railroad labor tradition; dynamic rhythmic energy</p>
+<p>- [[I Am Thine (Draw Me Nearer)]] — Traditional hymn, arr. Marques L. A. Garrett, TTBB; faith and spiritual intimacy; contemporary arrangement</p>
+<p>- [[I See His Blood Upon the Rose]] — Timothy Tharaldson, TTBB + baritone solo; a cappella; Christmas/Lenten sacred</p>
+<p>- [[If There Is]] — Dominick DiOrio, TTB; Scottish blessing text; syncopated/rhythmic; Mark Foster/Hal Leonard</p>
+<p>- [[Invocation and Dance]] — David Conte, SATB/TTBB; standard civic repertory; E.C. Schirmer; ACDA Brock Commission</p>
+<p>- [[Joshua Fit the Battle of Jericho]] — Traditional Spiritual (arr. Stacey V. Gibbs); TTBB; faith, triumph; contemporary arrangement; African American traditions</p>
+<p>- [[Keep Going]] — Carlos Cordero, TTBB & Piano; text by Ryan Heller; resilience and love amid difficulty; difficulty 4/5; also available with strings or full orchestra</p>
+<p>- [[Let It Be Me]] — Joy Oladokun; contemporary pop; faith and identity exploration; considering for Pride As Big As Texas</p>
+<p>- [[A Lover Leaves (But Love Does Not)]] — Music by Ash; original TTBB composition; love and loss; considering for Pride As Big As Texas</p>
+<p>- [[Melody]] — Ysaye M. Barnwell; celebrates African American LGBTQ+ traditions; GALA Choruses database; considering for Pride As Big As Texas</p>
+<p>- [[My Heart Be Brave]] — Marques L. A. Garrett, TTBB; resilience and courage; contemporary composition</p>
+<p>- [[My Soul's Been Anchored in the Lord]] — Traditional Spiritual, arr. Marques L. A. Garrett, TTBB; faith and spiritual security; African American traditions</p>
+<p>- [[No Mirrors in My House]] — Ysaye M. Barnwell; SATBB/adaptable TTBB; identity and self-affirmation; African American traditions; research for TTBB potential</p>
+<p>- [[Northern Lights (Gjeilo)]] — Ola Gjeilo, TTBB & Piano; Latin "Pulchra es amica mea" (Song of Solomon); aurora borealis imagery; 4:35; lush contemporary harmonic language</p>
+<p>- [[The Origin of Love]] — Stephen Trask (from Hedwig and the Angry Inch); theatrical, mythological; humor and heart; queer themes; considering for Pride As Big As Texas</p>
+<p>- [[Prayer]] — Ysaye M. Barnwell; SATBB/adaptable TTBB; spirituality and reflection; research for TTBB potential</p>
+<p>- [[03 - TTBB WIKI/wiki/pieces/Requiescat]] — Andrea Ramsey, TTBB; Oscar Wilde text; tender sacred setting</p>
+<p>- [[Revelation]] — Troey Sivan; contemporary pop; about liberation from toxic Christian ideals; considering for Pride As Big As Texas</p>
+<p>- [[Seule O Abbondante Fleur]] — Joshua Mazur, TTBB revised; Rilke poem; colorful contemporary</p>
+<p>- [[The Seven Last Words of the Unarmed]] — Joel Thompson, TTBB; final words of unarmed Black victims; justice/memorial</p>
+<p>- [[Shenandoah]] — Traditional American Folk Song (multiple arrangers); TTBB; river journey, Americana, travel; direct river metaphor paralleling "The River"</p>
+<p>- [[Shir L'Shalom]] — arr. J. David Moore, TTBB & Piano or Guitar; Israeli peace anthem; Yair Rosenblum/Yaakov Rotblit; Denver Gay Men's Chorus recording available</p>
+<p>- [[Since I Laid My Burden Down]] — Kyle Pederson, TTBB; spiritual freedom and liberation; contemporary spiritual composition</p>
+<p>- [[Sing Out My Soul]] — Marques L. A. Garrett, TTBB; William Henry Davies text; joy and spiritual expression; ACDA Eastern Division commission</p>
+<p>- [[Sing We Now of Christmas]] — Kyle Pederson, TTBB & Piano, optional oboe; Christmas celebration; contemporary composition</p>
+<p>- [[Slow Me Down, Lord]] — Linda Spevacek; TTBB; spiritual prayer, mindfulness; contemporary original spiritual; rhythmic energy with contemplative text</p>
+<p>- [[Soon We Will Be Done]] — Kyle Pederson (adapted), TTBB with spoken word solos; African American spiritual; social justice and equity; contemporary arrangement</p>
+<p>- [[Steal Away]] — Traditional Spiritual (arr. Stacey V. Gibbs); TTBB; freedom, liberation, escape; contemporary arrangement; historical/spiritual significance</p>
+<p>- [[Sunday]] — Joy Oladokun; contemporary pop; coming out as visible LGBTQ+ person in church; considering for Pride As Big As Texas</p>
+<p>- [[Sweet Rivers]] — shape-note hymn arr. Unterseher for TTB; strong pianist required; Oxford</p>
+<p>- [[Three Songs of Life]] — Christina Whitten Thomas, TTBB; three Longfellow poems; contemplative arc</p>
+<p>- [[Till the Stars Fall from the Sky]] — Sally K. Albrecht; TTBB; nature-inspired, eternal love, contemplative; lyrical folk-song quality; similar to "The River"</p>
+<p>- [[To My Brother]] — Joseph Gregorio, TTBB; James Clementi letters about brother Tyler; social justice/grief</p>
+<p>- [[United in Purpose]] — Rollo Dilworth, TTBB; civic unity and shared purpose; piano; patriotism & American democracy</p>
+<p>- [[Wanna Die Easy, When I Die]] — Ysaye M. Barnwell; SSAATBB; excellent TTBB potential; mortality, legacy, spirituality; research for TTBB potential</p>
+<p>- [[The Warrior]] — J. Reese Norris, TTBB; dramatic with percussion, spoken dialog, sound effects</p>
+<p>- [[When Christmas Morn is Dawning]] — Kyle Pederson, TTBB & Piano, optional clarinet; Advent/Christmas; contemporary seasonal composition</p>
+<p>- [[Will There Really Be a Morning?]] — Patrick Vu; TTBB a cappella; Emily Dickinson poem; hope, resilience, questioning; contemporary emerging composer</p>
+<p>- [[Winter Song]] — Sara Bareilles & Ingrid Michaelson; duet; melancholy, longing and resilience; considering for Pride As Big As Texas</p>
+<p>- [[The Witching Hour]] — Braeden Ayres, TTB; Dies Irae chant + "double-double, toil and trouble"; fall/Halloween themes</p>
+<p>- [[Would You Harbor Me?]] — Ysaye M. Barnwell; SSAATB; hospitality, acceptance, refuge; potentially LGBTQ+-affirming; research needed</p><p><hr></p><p><h2>Composers</h2></p><p>- [[Marques L. A. Garrett]] — contemporary composer/arranger; Associate Professor at University of North Texas; African American spiritual tradition; optimistic accessible voice</p>
+<p>- [[PJ Mooney]] — contemporary choral composer; lyrical, text-driven writing</p>
+<p>- [[Giovanni Battista Fasolo]] — early Baroque Italian composer; works survive as original arias</p>
+<p>- [[Tom Shelton]] — choral arranger; arr. Fasolo for men's chorus</p>
+<p>- [[Reginald Unterseher]] — choral arranger; shape-note / sacred tradition</p>
+<p>- [[Dominick DiOrio]] — contemporary American; rhythmic, syncopated; Jonathan Palant Choral Series</p>
+<p>- [[Braeden Ayres]] — contemporary; dark dramatic choral; theatrical approach; Dies Irae combinations</p>
+<p>- [[Kira Rugen]] — choral arranger; robust festive arrangements for men's chorus</p>
+<p>- [[Andrea Ramsey]] — contemporary; tender intimate sacred works</p>
+<p>- [[Christina Whitten Thomas]] — contemporary; lyrical contemplative; literary text engagement</p>
+<p>- [[J. Reese Norris]] — contemporary; dramatic theatrical; percussion & sound design integration</p>
+<p>- [[Joshua B. Himes]] — contemporary; accessible sacred; lush homophonic writing</p>
+<p>- [[Joseph Gregorio]] — contemporary; socially engaged; grief and identity themes; Cantus commissions</p>
+<p>- [[Kurt Knecht]] — contemporary; lyrical accessible; soaring melodies; co-founder MusicSpoke</p>
+<p>- [[Dale Trumbore]] — contemporary; innovative composite works; sophisticated voice-leading</p>
+<p>- [[Joshua Mazur]] — contemporary; colorful literary; adaptable across voicings</p>
+<p>- [[Kathleen Allan]] — contemporary; introspective lyrical; memory and place themes</p>
+<p>- [[Joel Thompson]] — contemporary; socially engaged powerful; memorial works; racial justice</p>
+<p>- [[Timothy Tharaldson]] — contemporary; sacred meditative; chorale-based liturgical integration</p>
+<p>- [[David Maddux]] — contemporary TTBB specialist; pop and musical theatre arrangements; theatrical sensibility; holiday music and special projects</p>
+<p>- [[Charlie Beale]] — contemporary arranger; pop and musical theatre; queer-affirming repertoire</p>
+<p>- [[Stuart Beatch]] — contemporary LGBTQ+ composer-arranger; empowerment and queer-affirming works</p>
+<p>- [[Joy Oladokun]] — contemporary LGBTQ+ singer-songwriter; powerful voice addressing faith, identity, resilience</p>
+<p>- [[Ysaye M. Barnwell]] — renowned composer; African American traditions; spirituality, identity, justice; former Sweet Honey in the Rock member</p>
+<p>- [[Pax Ressler]] — transfeminine composer; LGBTQIA+ choral specialist; 10+ years with queer choruses; contemporary spiritual sensibility</p>
+<p>- [[Stacey V. Gibbs]] — African American spiritual arranger; contemporary energy; joy and celebration; women arranger</p>
+<p>- [[Emily Crocker]] — choral arranger; spirituals and traditional music; contemporary treatment; women arranger</p>
+<p>- [[Susan Labarr]] — contemporary composer (b. 1981); lyrical poetic choral works; Missouri Composer Laureate 2012-2013; 23+ published compositions</p>
+<p>- [[Patrick Vu]] — emerging contemporary composer (b. 1998); lyrical expressive voice; ACDA Raymond Brock Prize winner 2023; Carnegie Hall debut 2026</p>
+<p>- [[Sally K. Albrecht]] — prolific women composer; 325+ published works; Director of Choral Publications for Alfred Music; lyrical contemporary folk-influenced</p>
+<p>- [[Linda Spevacek]] — contemporary women composer; original spirituals; rhythmic energy; emotional accessibility</p>
+<p>- [[Kyle Pederson]] — contemporary composer (b. 1971); Minneapolis-based; ACDA Genesis Prize 2020; American Prize in Choral Composition 2019; sacred-secular integration; social justice; hope and compassion</p>
+<p>- [[Rollo Dilworth]] — contemporary American composer/arranger; jazz, gospel, blues; African American traditions; freedom and civic justice themes; Hal Leonard</p>
+<p>- [[Timothy C. Takach]] — contemporary American composer; lyrical, accessible; SATB/TTBB/SSA catalog; self-published / Graphite Publishing</p>
+<p>- [[David Conte]] — contemporary American composer (b. 1955); lyrical, melodic; 150+ works; ACDA Brock Commission 2007; SF Conservatory faculty; E.C. Schirmer</p>
+<p>- [[Ola Gjeilo]] — Norwegian-American composer (b. 1978); one of the most performed contemporary choral composers worldwide; lush sonic-wash harmonic language; sacred Latin texts; nature imagery</p>
+<p>- [[Anthony Trecek-King]] — contemporary American arranger; African American work song and spiritual tradition; dynamic rhythmic arrangements for men's voices</p>
+<p>- [[Carlos Cordero]] — contemporary independent composer; emotionally direct; resilience and hope themes; Graphite Publishing</p>
+<p>- [[J. David Moore]] — contemporary arranger/composer; Fresh Ayre Music founder; folk-influenced world music arrangements; LGBTQ+ choral community connections</p><p><hr></p><p><h2>Concerts</h2></p><p>- [[Pride As Big As Texas]] — TCC 2026; celebration of LGBTQ+ identity in Texas with four-section emotional arc (celebration → joy → emotional depth → empowerment)</p>
+<p>- [[Women's Voices, Queer Strength]] — TCC 2027; celebration of women composers, divas, and legends through gay men's chorus; features pop divas, Broadway, country, spirituals; four-section arc from celebration → identity → transcendence → community</p><p><hr></p><p><h2>Themes</h2></p><p>- [[Men's Chorus — Accessible Repertoire]] — TTB/TB repertoire for smaller forces; musically satisfying without high demands</p>
+<p>- [[Social Justice & Memorial]] — contemporary works addressing systemic injustice, loss, and memorial; powerful statements on equity and racial justice</p>
+<p>- [[Sacred & Spiritual]] — devotional and liturgical works; psalm settings, Marian texts, meditative sacred pieces with accessible writing</p>
+<p>- [[Dramatic & Theatrical]] — contemporary works with theatrical approach: sound design, percussion, spoken elements, extended techniques</p>
+<p>- [[Pride & LGBTQ+ Identity]] — celebration of authentic self, visibility, joy, and community; affirmation of LGBTQ+ identity</p>
+<p>- [[Religious Trauma & Recovery]] — healing from faith-based harm, liberation from toxic religious ideals, reclaiming spirituality</p>
+<p>- [[Resilience & Empowerment]] — survival, resistance, social justice, standing tall in face of adversity; vision for future</p>
+<p>- [[Patriotism & American Democracy]] — TTBB and dual-voicing works engaging Constitution, Declaration, Bill of Rights, and civic freedom themes; sourced from We the People repertoire research</p><p><hr></p><p><h2>Analyses</h2></p><p>- [[September 11 Commemoration Programming — TCC]] — TTBB repertoire recommendations for memorial programming; emotional arc from confrontation through grief toward reflection</p>
+  </div>
+</main>
+
+<footer class="vf-footer-ap" style="border-top: none; padding-top: 80px;">
+  Copyright &copy; 2026 Notes from Sean Baugh. All rights reserved.
+</footer>
+
+</body>
+</html>
