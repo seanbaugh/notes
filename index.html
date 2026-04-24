@@ -4,221 +4,223 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes from Sean Baugh</title>
-  <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body.vf-apple {
-  background: #f5f5f7;
-  color: #1d1d1f;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-.vf-apple a { color: inherit; text-decoration: none; }
-.vf-apple img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
-
-/* Navigation */
-.vf-nav-ap {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 40px; height: 52px;
-}
-.vf-nav-ap-logo {
-  font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: #1d1d1f;
-}
-
-/* Hero */
-.vf-hero-ap {
-  text-align: center; padding: 120px 40px 80px; max-width: 980px; margin: 0 auto;
-}
-.vf-hero-ap-title {
-  font-size: clamp(48px, 8vw, 80px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.05; color: #1d1d1f; margin-bottom: 24px;
-}
-.vf-hero-ap-subtitle {
-  font-size: 24px; font-weight: 400; color: #86868b; line-height: 1.33337; letter-spacing: .009em; max-width: 680px; margin: 0 auto;
-}
-
-/* Projects */
-.vf-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px; }
-.vf-filter-btn { background: rgba(0,0,0,0.05); color: #1d1d1f; border: none; padding: 8px 16px; border-radius: 100px; font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: inherit; font-weight: 400; }
-.vf-filter-btn:hover { background: rgba(0,0,0,0.1); }
-.vf-filter-btn.active { background: #1d1d1f; color: #fff; font-weight: 500; }
-
-.vf-projects-ap {
-  padding: 40px; max-width: 1200px; margin: 0 auto;
-}
-.vf-projects-ap-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
-}
-.vf-card-ap {
-  background: #ffffff; border-radius: 18px; padding: 40px; display: flex; flex-direction: column;
-  transition: transform 0.2s cubic-bezier(0,0,0.5,1), box-shadow 0.2s cubic-bezier(0,0,0.5,1);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
-}
-.vf-card-ap:hover {
-  transform: scale(1.02); box-shadow: 0 12px 48px rgba(0,0,0,0.08);
-}
-.vf-card-ap-title {
-  font-size: 28px; font-weight: 600; letter-spacing: .004em; color: #1d1d1f; margin-bottom: 12px;
-}
-.vf-card-ap-desc {
-  font-size: 17px; font-weight: 400; color: #86868b; margin-bottom: 24px; line-height: 1.47;
-}
-.vf-card-ap-tags {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
-}
-.vf-tag-ap {
-  background: #f5f5f7; color: #1d1d1f; font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 100px;
-}
-.vf-card-ap-link {
-  margin-top: auto; color: #0066cc; font-size: 17px; font-weight: 400;
-}
-.vf-card-ap-link:hover { text-decoration: underline; }
-
-/* Quote & Footer */
-.vf-quote-ap {
-  text-align: center; padding: 120px 40px; max-width: 800px; margin: 0 auto;
-}
-.vf-quote-ap p {
-  font-size: 32px; font-weight: 600; color: #1d1d1f; line-height: 1.25; letter-spacing: .004em;
-}
-.vf-footer-ap {
-  border-top: 1px solid #d2d2d7; padding: 32px 40px; text-align: center; font-size: 12px; color: #86868b;
-  max-width: 980px; margin: 0 auto;
-}
-
-/* Project Page */
-.vf-page-ap-header {
-  text-align: center; padding: 100px 40px 60px; max-width: 800px; margin: 0 auto;
-}
-.vf-page-ap-title {
-  font-size: 64px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 16px;
-}
-.vf-page-ap-meta {
-  font-size: 17px; color: #86868b; font-weight: 400;
-}
-.vf-page-ap-content {
-  background: #ffffff; padding: 80px 40px; border-radius: 32px 32px 0 0; box-shadow: 0 -4px 24px rgba(0,0,0,0.04);
-}
-.vf-prose-ap {
-  max-width: 680px; margin: 0 auto;
-}
-.vf-prose-ap p {
-  font-size: 19px; line-height: 1.6; color: #1d1d1f; margin-bottom: 1.5rem; font-weight: 400;
-}
-.vf-prose-ap h2, .vf-prose-ap h3 {
-  font-weight: 600; color: #1d1d1f; letter-spacing: .004em; margin-top: 2.5rem; margin-bottom: 1rem;
-}
-.vf-prose-ap h2 { font-size: 32px; }
-.vf-prose-ap h3 { font-size: 24px; }
-.vf-prose-ap a { color: #0066cc; text-decoration: none; }
-.vf-prose-ap a:hover { text-decoration: underline; }
-.vf-prose-ap pre, .vf-prose-ap code {
-  background: #f5f5f7; color: #1d1d1f; border-radius: 8px; font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-}
-.vf-prose-ap pre { padding: 20px; overflow-x: auto; font-size: 14px; margin: 2rem 0; }
-.vf-prose-ap code { padding: 3px 6px; font-size: 0.9em; }
-.vf-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 60px 0; }
-.vf-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
-.vf-gallery img { margin: 0; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); width: 100%; height: 100%; object-fit: cover; }
-.vf-image-single { display: flex; justify-content: center; margin: 60px 0; }
-.vf-prose-ap blockquote {
-  border-left: 4px solid #d2d2d7; padding-left: 1.5rem; color: #86868b; margin: 2rem 0; font-size: 24px; font-style: italic;
-}
-.vf-prose-ap hr { border: none; border-top: 1px solid #d2d2d7; margin: 3rem 0; }
-
-.vf-back-ap {
-  position: absolute; top: 16px; left: 40px; color: #0066cc; font-size: 14px; font-weight: 400; z-index: 200; display: flex; align-items: center;
-}
-.vf-back-ap:hover { text-decoration: underline; }
-</style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="vf-apple">
+<body>
 
-<nav class="vf-nav-ap">
-  <div class="vf-nav-ap-logo">Notes from Sean Baugh</div>
-  <div style="display:flex;gap:24px;align-items:center;">
-    <a href="#work" style="color:#0066cc; font-size:14px; font-weight:400;">Work</a>
+<!-- ============================================================
+     NAV — deep navy, gold accent border
+     ============================================================ -->
+<nav class="m-nav">
+  <span class="m-nav-logo">Notes from Sean Baugh</span>
+  <div class="m-nav-divider"></div>
+  <span class="m-nav-tagline">Music, ideas, and the work between the notes.</span>
+  <div class="m-nav-right">
+    <a href="#feed" class="m-nav-link">Stories</a>
+    <a href="#feed" class="m-nav-cta">Start reading</a>
   </div>
 </nav>
 
-<header class="vf-hero-ap">
-  <h1 class="vf-hero-ap-title">Pro. Beyond.</h1>
-  <p class="vf-hero-ap-subtitle">Welcome to my digital portfolio.</p>
-</header>
-
-<section id="work" class="vf-projects-ap">
-  
-    <div class="vf-filter-bar">
-      <button class="vf-filter-btn active" data-filter="all">All</button>
-      <button class="vf-filter-btn" data-filter="design">design</button><button class="vf-filter-btn" data-filter="ttbb">ttbb</button><button class="vf-filter-btn" data-filter="web">web</button>
+<!-- ============================================================
+     HERO — full-viewport, geometric SVG background
+     ============================================================ -->
+<section class="m-hero">
+  <div class="m-hero-bg"></div>
+  <div class="m-hero-inner">
+    <div class="m-hero-eyebrow">Notes from a conductor</div>
+    <h1 class="m-hero-title">Stay <em>curious.</em></h1>
+    <p class="m-hero-subtitle">Dispatches from a professional musician and conductor — on craft, creativity, collaboration, and what happens when you really listen.</p>
+    <div class="m-hero-cta-row">
+      <a href="#feed" class="m-hero-cta">Start reading</a>
+      <a href="#feed" class="m-hero-cta-ghost">Browse stories</a>
     </div>
-  
-  <div class="vf-projects-ap-grid">
-    
-<a href="pages/does-this-break-the-design.html" class="vf-card-ap vf-filter-card" data-tags="design web">
-  <div class="vf-card-ap-title">Does this break the design?</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">design</span><span class="vf-tag-ap">web</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
+  </div>
+  <div class="m-hero-scroll">scroll</div>
+</section>
 
-<a href="pages/ttbb-wiki.html" class="vf-card-ap vf-filter-card" data-tags="ttbb">
-  <div class="vf-card-ap-title">TTBB Wiki</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">ttbb</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
+<!-- ============================================================
+     DIAGONAL STRIPE BAND — navy with amber diagonals
+     ============================================================ -->
+<div class="m-band-stripe"></div>
 
-<a href="pages/my-first-project.html" class="vf-card-ap vf-filter-card" data-tags="design web">
-  <div class="vf-card-ap-title">My First Project</div>
-  
-  <div class="vf-card-ap-tags"><span class="vf-tag-ap">design</span><span class="vf-tag-ap">web</span></div>
-  <div class="vf-card-ap-link">Learn more &gt;</div>
-</a>
+<!-- ============================================================
+     TOPIC PILLS (filter bar) — cream background
+     ============================================================ -->
+<div class="m-topics" id="topic-bar">
+  <button class="m-topic-pill active" data-filter="all">All stories</button>
+  <button class="m-topic-pill" data-filter="design">Design</button>
+  <button class="m-topic-pill" data-filter="ttbb">TTBB</button>
+  <button class="m-topic-pill" data-filter="web">Web</button>
+</div>
+
+<!-- ============================================================
+     FEED + SIDEBAR — dot-grid cream background
+     ============================================================ -->
+<div class="m-feed-wrapper">
+  <main class="m-layout" id="feed">
+
+    <!-- FEED -->
+    <div class="m-feed">
+
+      <!-- Featured article -->
+      <a href="pages/ttbb-wiki.html" class="m-article featured m-filter-card" data-tags="ttbb">
+        <div class="m-article-thumb">
+          <div class="m-article-thumb-placeholder">🎵</div>
+        </div>
+        <div class="m-article-body">
+          <div class="m-article-author-row">
+            <div class="m-author-avatar">SB</div>
+            <span class="m-author-name">Sean Baugh</span>
+          </div>
+          <div class="m-article-title">TTBB Wiki</div>
+          <div class="m-article-excerpt">A comprehensive reference for tenor-bass choral repertoire — voicings, editions, programming ideas, and notes from the podium.</div>
+          <div class="m-article-meta">
+            <span class="m-article-tag">TTBB</span>
+            <span>Apr 24</span>
+            <span>·</span>
+            <span>5 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Standard article -->
+      <a href="pages/my-first-project.html" class="m-article m-filter-card" data-tags="design web">
+        <div class="m-article-body">
+          <div class="m-article-author-row">
+            <div class="m-author-avatar">SB</div>
+            <span class="m-author-name">Sean Baugh</span>
+          </div>
+          <div class="m-article-title">My First Project</div>
+          <div class="m-article-excerpt">Where it all started — the design decisions, the web work, and what I'd do differently now.</div>
+          <div class="m-article-meta">
+            <span class="m-article-tag">Design</span>
+            <span class="m-article-tag">Web</span>
+            <span>Apr 2026</span>
+            <span>·</span>
+            <span>3 min read</span>
+          </div>
+        </div>
+        <div class="m-article-thumb">
+          <div class="m-article-thumb-placeholder">🖥️</div>
+        </div>
+      </a>
+
+    </div><!-- /m-feed -->
+
+    <!-- SIDEBAR -->
+    <aside class="m-sidebar">
+
+      <!-- About the author -->
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">About the author</div>
+        <div class="m-sidebar-author">
+          <div class="m-sidebar-avatar">SB</div>
+          <div>
+            <div class="m-sidebar-author-name">Sean Baugh</div>
+          </div>
+        </div>
+        <p class="m-sidebar-author-bio">Professional musician and conductor. Writing about choral music, performance practice, creativity, and the small details that make everything else possible.</p>
+      </div>
+
+      <!-- Topics -->
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">Topics</div>
+        <div class="m-sidebar-topics">
+          <span class="m-sidebar-topic">Choral Music</span>
+          <span class="m-sidebar-topic">Conducting</span>
+          <span class="m-sidebar-topic">TTBB</span>
+          <span class="m-sidebar-topic">Design</span>
+          <span class="m-sidebar-topic">Web</span>
+          <span class="m-sidebar-topic">Creativity</span>
+        </div>
+      </div>
+
+      <!-- More reading -->
+      <div class="m-sidebar-section">
+        <div class="m-sidebar-heading">More from Sean Baugh</div>
+
+        <a href="pages/ttbb-wiki.html" class="m-sidebar-article">
+          <div class="m-sidebar-num">01</div>
+          <div>
+            <div class="m-sidebar-article-title">TTBB Wiki</div>
+            <div class="m-sidebar-article-meta">5 min read · TTBB</div>
+          </div>
+        </a>
+
+        <a href="pages/my-first-project.html" class="m-sidebar-article">
+          <div class="m-sidebar-num">02</div>
+          <div>
+            <div class="m-sidebar-article-title">My First Project</div>
+            <div class="m-sidebar-article-meta">3 min read · Design · Web</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Quote -->
+      <div class="m-sidebar-section">
+        <p class="m-sidebar-quote">"The details are not the details. They make the design."</p>
+      </div>
+
+    </aside>
+
+  </main>
+</div><!-- /m-feed-wrapper -->
+
+<!-- ============================================================
+     CROSSHATCH QUOTE SECTION — navy grid with gold quote
+     ============================================================ -->
+<section class="m-section-crosshatch">
+  <div class="m-section-crosshatch-inner">
+    <blockquote>
+      "The details are not the details.<br>They make the design."
+    </blockquote>
+    <cite>— Charles Eames</cite>
   </div>
 </section>
 
-<section class="vf-quote-ap">
-  <p>&quot;The details are not the details. They make the design.&quot;</p>
-</section>
+<!-- ============================================================
+     CHEVRON BAND — beige with gold + blue diagonals
+     ============================================================ -->
+<div class="m-band-chevron"></div>
 
-<footer class="vf-footer-ap">
-  Copyright &copy; 2026 Notes from Sean Baugh. All rights reserved. <br/>
-  Published with VaultFolio.
+<!-- ============================================================
+     FOOTER — navy, gold top border
+     ============================================================ -->
+<footer class="m-footer">
+  <a href="#" class="m-footer-link">About</a>
+  <a href="#feed" class="m-footer-link">Stories</a>
+  <a href="#" class="m-footer-link">Contact</a>
+  <span class="m-footer-copy">© 2026 Notes from Sean Baugh</span>
 </footer>
 
+<!-- ============================================================
+     FILTER SCRIPT
+     ============================================================ -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const filters = document.querySelectorAll(".vf-filter-btn");
-  const cards = document.querySelectorAll(".vf-filter-card");
-  
-  filters.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filters.forEach(f => f.classList.remove("active"));
-      btn.classList.add("active");
-      
-      const tag = btn.getAttribute("data-filter");
-      
-      cards.forEach(card => {
-        if (tag === "all") {
-          card.style.display = "";
+(function () {
+  var pills = document.querySelectorAll('.m-topic-pill');
+  var cards = document.querySelectorAll('.m-filter-card');
+
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+
+      var filter = pill.getAttribute('data-filter');
+
+      cards.forEach(function (card) {
+        if (filter === 'all') {
+          card.style.display = '';
         } else {
-          const cardTags = card.getAttribute("data-tags") || "";
-          const tList = cardTags.split(" ");
-          if (tList.includes(tag)) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
+          var tags = (card.getAttribute('data-tags') || '').split(' ');
+          card.style.display = tags.includes(filter) ? '' : 'none';
         }
       });
     });
   });
-});
+}());
 </script>
+
 </body>
 </html>
