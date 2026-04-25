@@ -4,21 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Article Title — Notes from Sean Baugh</title>
-  <!--
-    NOTE: styles.css uses a relative path (../styles.css).
-    This works fine on GitHub Pages served over https://.
-    For local double-click previewing, copy the shared CSS block
-    from ttbb-wiki.html into a <style> tag here instead.
-  -->
-  <link rel="stylesheet" href="../styles.css" />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400;1,8..60,600&family=Inter:wght@300;400;500;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0f1f3d;--navy-mid:#1a3260;--blue:#2d5fa6;--blue-light:#4a7fc1;--sky:#d6e4f5;--gold:#c8973a;--amber:#e8b84b;--cream:#fdf6e3;--beige:#f5ead0;--sand:#e8d9b8;--white:#ffffff;--off-white:#fafaf8;--near-black:#111827;--dark-text:#1e2d45;--mid-gray:#637089;--border:#dde4ef;--serif:'Source Serif 4','Georgia',serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--off-white);color:var(--dark-text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.m-page-nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px solid var(--gold);height:58px;display:flex;align-items:center;padding:0 32px;gap:16px}
+.m-back-link{font-size:14px;color:rgba(253,246,227,.65);display:flex;align-items:center;gap:6px;transition:color .15s}
+.m-back-link:hover{color:var(--amber)}
+.m-page-logo{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);flex:1;text-align:center;text-decoration:none}
+.m-article-header{max-width:728px;margin:56px auto 0;padding:0 24px}
+.m-article-header-tag{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.m-article-header-title{font-family:var(--serif);font-size:clamp(30px,5vw,48px);font-weight:700;line-height:1.12;letter-spacing:-.5px;color:var(--navy);margin-bottom:16px}
+.m-article-header-subtitle{font-family:var(--serif);font-size:22px;font-weight:300;font-style:italic;color:var(--mid-gray);line-height:1.45;margin-bottom:24px}
+.m-article-byline{display:flex;align-items:center;gap:14px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:36px}
+.m-byline-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:15px;font-weight:700;font-family:var(--sans);flex-shrink:0;border:3px solid var(--gold)}
+.m-byline-name{font-size:15px;font-weight:600;color:var(--navy)}
+.m-byline-meta{font-size:13px;color:var(--mid-gray)}
+.m-article-cover{max-width:960px;margin:0 auto 48px;padding:0 24px}
+.m-article-cover-placeholder{width:100%;height:400px;background:linear-gradient(135deg,var(--navy-mid) 0%,var(--blue) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:72px}
+.m-prose{max-width:728px;margin:0 auto;padding:0 24px 80px;font-family:var(--serif);font-size:20px;line-height:1.72;color:var(--dark-text)}
+.m-prose p{margin-bottom:1.8rem}
+.m-prose h2{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.2;color:var(--navy);margin-top:3rem;margin-bottom:1rem;letter-spacing:-.3px}
+.m-prose h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--navy);margin-top:2.5rem;margin-bottom:.8rem}
+.m-prose blockquote{font-size:24px;font-style:italic;border-left:4px solid var(--gold);padding-left:24px;margin:2.5rem 0;color:var(--navy-mid);line-height:1.5}
+.m-prose a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:3px}
+.m-prose a:hover{text-decoration-color:var(--blue)}
+.m-prose ul,.m-prose ol{padding-left:1.5rem;margin-bottom:1.8rem}
+.m-prose li{margin-bottom:.5rem}
+.m-prose hr{border:none;text-align:center;margin:3rem 0}
+.m-prose hr::after{content:'· · ·';color:var(--gold);font-size:20px;letter-spacing:8px}
+.m-prose pre{background:var(--navy);color:var(--cream);border-radius:8px;padding:22px;overflow-x:auto;font-size:14px;font-family:'Courier New',Courier,monospace;margin-bottom:1.8rem;line-height:1.55;border-left:4px solid var(--gold)}
+.m-prose code{font-family:'Courier New',Courier,monospace;font-size:.85em;background:var(--sky);color:var(--navy);padding:2px 6px;border-radius:3px}
+.m-prose figure{margin:2.5rem 0}
+.m-prose figure img{width:100%;border-radius:6px}
+.m-prose figcaption{font-family:var(--sans);font-size:13px;color:var(--mid-gray);text-align:center;margin-top:8px}
+.m-clap-bar{max-width:728px;margin:0 auto 40px;padding:16px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px}
+.m-clap-btn{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--mid-gray);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;transition:color .15s}
+.m-clap-btn:hover{color:var(--navy)}
+.m-clap-icon{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;transition:border-color .15s}
+.m-clap-btn:hover .m-clap-icon{border-color:var(--gold)}
+.m-footer{background:var(--navy);border-top:3px solid var(--gold);padding:32px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center}
+.m-footer-link{font-size:13px;color:rgba(253,246,227,.6);transition:color .15s}
+.m-footer-link:hover{color:var(--amber)}
+.m-footer-copy{font-size:13px;color:rgba(253,246,227,.4)}
+@media(max-width:600px){.m-page-nav{padding:0 20px}.m-prose{font-size:18px}}
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="m-page-nav">
   <a href="../index.html" class="m-back-link">← All stories</a>
-  <div class="m-page-logo">Notes from Sean Baugh</div>
-  <div style="width: 120px;"></div>
+  <a href="../index.html" class="m-page-logo">Notes from Sean Baugh</a>
+  <a href="about.html" class="m-back-link" style="justify-content: flex-end;">About</a>
 </nav>
 
 <!-- ARTICLE HEADER -->
@@ -83,7 +125,7 @@ function greet(name) {
 <!-- FOOTER -->
 <footer class="m-footer">
   <a href="../index.html" class="m-footer-link">← Back to all stories</a>
-  <a href="#" class="m-footer-link">About</a>
+  <a href="about.html" class="m-footer-link">About</a>
   <span class="m-footer-copy">© 2026 Notes from Sean Baugh</span>
 </footer>
 

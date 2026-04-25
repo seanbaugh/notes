@@ -72,6 +72,7 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: -0.3px;
   color: var(--cream);
   flex-shrink: 0;
+  text-decoration: none;
 }
 
 .m-nav-divider {
