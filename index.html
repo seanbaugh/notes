@@ -17,6 +17,7 @@
             >
             <div class="m-nav-right">
                 <a href="#feed" class="m-nav-link">Stories</a>
+                <a href="pages/photography.html" class="m-nav-link">Photography</a>
                 <a href="pages/about.html" class="m-nav-link">About</a>
                 <a href="#feed" class="m-nav-cta">Start reading</a>
             </div>
@@ -256,12 +257,230 @@
             </div>
         </section>
 
+        <!-- PHOTOGRAPHY SECTION -->
+        <section class="m-photo-section">
+            <div class="m-photo-section-inner">
+                <div class="m-photo-section-header">
+                    <div class="m-photo-section-eyebrow">Through the lens</div>
+                    <h2 class="m-photo-section-title">Selected Galleries</h2>
+                    <p class="m-photo-section-desc">
+                        Photography is another way of listening — finding
+                        structure, light, and meaning in the world between
+                        performances.
+                    </p>
+                </div>
+                <div class="m-photo-grid">
+                    <a href="pages/photography.html" class="m-photo-card m-photo-card--wide">
+                        <div class="m-photo-card-img" style="background: linear-gradient(135deg, #1a1040 0%, #3d3355 40%, #5a4f7a 100%);">
+                            <div class="m-photo-card-overlay">
+                                <div class="m-photo-card-label">Concert &amp; Stage</div>
+                                <div class="m-photo-card-count">12 photos</div>
+                            </div>
+                        </div>
+                        <div class="m-photo-card-caption">
+                            <div class="m-photo-card-title">Concert &amp; Stage</div>
+                            <div class="m-photo-card-sub">The light, the space, the moment before the downbeat.</div>
+                        </div>
+                    </a>
+                    <a href="pages/photography.html" class="m-photo-card">
+                        <div class="m-photo-card-img" style="background: linear-gradient(145deg, #251650 0%, #ff5733 100%);">
+                            <div class="m-photo-card-overlay">
+                                <div class="m-photo-card-label">Travel</div>
+                                <div class="m-photo-card-count">24 photos</div>
+                            </div>
+                        </div>
+                        <div class="m-photo-card-caption">
+                            <div class="m-photo-card-title">Travel</div>
+                            <div class="m-photo-card-sub">Places music has taken me.</div>
+                        </div>
+                    </a>
+                    <a href="pages/photography.html" class="m-photo-card">
+                        <div class="m-photo-card-img" style="background: linear-gradient(160deg, #3d3355 0%, #ffcc55 100%);">
+                            <div class="m-photo-card-overlay">
+                                <div class="m-photo-card-label">Architecture</div>
+                                <div class="m-photo-card-count">18 photos</div>
+                            </div>
+                        </div>
+                        <div class="m-photo-card-caption">
+                            <div class="m-photo-card-title">Architecture</div>
+                            <div class="m-photo-card-sub">Geometry, shadow, and silence.</div>
+                        </div>
+                    </a>
+                    <a href="pages/photography.html" class="m-photo-card">
+                        <div class="m-photo-card-img" style="background: linear-gradient(130deg, #0d0a1a 0%, #5a4f7a 60%, #e8e4f5 100%);">
+                            <div class="m-photo-card-overlay">
+                                <div class="m-photo-card-label">Black &amp; White</div>
+                                <div class="m-photo-card-count">31 photos</div>
+                            </div>
+                        </div>
+                        <div class="m-photo-card-caption">
+                            <div class="m-photo-card-title">Black &amp; White</div>
+                            <div class="m-photo-card-sub">When colour steps aside.</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="m-photo-section-cta-row">
+                    <a href="pages/photography.html" class="m-photo-section-cta">View all galleries →</a>
+                </div>
+            </div>
+        </section>
+
+        <style>
+        .m-photo-section {
+            background-color: var(--off-white);
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 22px 22px;
+            padding: 72px 32px 80px;
+        }
+        .m-photo-section-inner { max-width: 1200px; margin: 0 auto; }
+        .m-photo-section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            max-width: 560px;
+        }
+        .m-photo-section-eyebrow {
+            font-family: var(--sans);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .m-photo-section-title {
+            font-family: var(--serif);
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.4px;
+            margin-bottom: 14px;
+            line-height: 1.1;
+        }
+        .m-photo-section-desc {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-style: italic;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+        .m-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 16px;
+        }
+        .m-photo-card--wide {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .m-photo-card {
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            background: var(--white);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(26,16,64,0.06);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .m-photo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(26,16,64,0.13);
+        }
+        .m-photo-card-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+        }
+        .m-photo-card--wide .m-photo-card-img {
+            aspect-ratio: unset;
+            height: 100%;
+            min-height: 280px;
+        }
+        .m-photo-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,16,64,0.72) 0%, rgba(26,16,64,0) 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .m-photo-card:hover .m-photo-card-overlay { opacity: 1; }
+        .m-photo-card-label {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cream);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .m-photo-card-count {
+            font-family: var(--sans);
+            font-size: 12px;
+            color: rgba(253,246,227,0.65);
+            margin-top: 3px;
+        }
+        .m-photo-card-caption {
+            padding: 16px 18px 18px;
+        }
+        .m-photo-card-title {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .m-photo-card-sub {
+            font-family: var(--sans);
+            font-size: 13px;
+            color: var(--mid-gray);
+            line-height: 1.5;
+        }
+        .m-photo-section-cta-row {
+            margin-top: 32px;
+            text-align: center;
+        }
+        .m-photo-section-cta {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            border: 1.5px solid var(--navy);
+            padding: 10px 28px;
+            border-radius: 100px;
+            transition: background 0.15s, color 0.15s;
+        }
+        .m-photo-section-cta:hover {
+            background: var(--navy);
+            color: var(--cream);
+        }
+        @media (max-width: 768px) {
+            .m-photo-grid { grid-template-columns: 1fr 1fr; }
+            .m-photo-card--wide { grid-column: span 2; grid-row: span 1; }
+            .m-photo-card--wide .m-photo-card-img { min-height: 200px; aspect-ratio: 16/9; }
+        }
+        @media (max-width: 500px) {
+            .m-photo-grid { grid-template-columns: 1fr; }
+            .m-photo-card--wide { grid-column: span 1; }
+            .m-photo-section { padding: 48px 20px 56px; }
+        }
+        </style>
+
         <!-- CHEVRON BAND -->
         <div class="m-band-chevron"></div>
 
         <!-- FOOTER -->
         <footer class="m-footer">
             <a href="#feed" class="m-footer-link">Stories</a>
+            <a href="pages/photography.html" class="m-footer-link">Photography</a>
             <a href="pages/about.html" class="m-footer-link">About</a>
             <a href="mailto:seanbaugh@gmail.com" class="m-footer-link"
                 >Contact</a
