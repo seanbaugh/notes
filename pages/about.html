@@ -204,6 +204,45 @@ img{max-width:100%;height:auto;display:block}
       transform: translateY(-1px);
     }
 
+    /* ---- Appearances ---- */
+    .m-appearances-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 8px;
+    }
+    .m-appearance-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .m-appearance-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .m-appearance-date {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+      min-width: 140px;
+    }
+    .m-appearance-details { flex: 1; }
+    .m-appearance-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .m-appearance-location {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--mid-gray);
+    }
+
     /* ---- Back to stories CTA ---- */
     .m-about-cta-row {
       text-align: center;
@@ -279,6 +318,42 @@ img{max-width:100%;height:auto;display:block}
         <div class="m-role-card-title">Writing</div>
         <div class="m-role-card-desc">Dispatches on craft, creativity, technology, and what happens when you really listen.</div>
       </div>
+    </div>
+  </div>
+
+  <hr class="m-about-divider" />
+
+  <!-- Appearances -->
+  <div class="m-about-section">
+    <div class="m-about-section-label">Upcoming</div>
+    <h2>Appearances</h2>
+
+    <div class="m-appearances-list">
+
+      <div class="m-appearance-row">
+        <div class="m-appearance-date">May 15, 2026</div>
+        <div class="m-appearance-details">
+          <div class="m-appearance-title">Placeholder Concert Title</div>
+          <div class="m-appearance-location">Venue Name · City, State</div>
+        </div>
+      </div>
+
+      <div class="m-appearance-row">
+        <div class="m-appearance-date">Jun 7, 2026</div>
+        <div class="m-appearance-details">
+          <div class="m-appearance-title">Placeholder Concert Title</div>
+          <div class="m-appearance-location">Venue Name · City, State</div>
+        </div>
+      </div>
+
+      <div class="m-appearance-row">
+        <div class="m-appearance-date">Jul 22, 2026</div>
+        <div class="m-appearance-details">
+          <div class="m-appearance-title">Placeholder Concert Title</div>
+          <div class="m-appearance-location">Venue Name · City, State</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
