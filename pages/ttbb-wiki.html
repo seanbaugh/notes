@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TTBB Wiki — Notes from Sean Baugh</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body.vf-glass {
+  background-color: #0D0D1A;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(79,70,229,0.1) 0%, transparent 70%);
+  background-attachment: fixed;
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+.vf-glass a { color: inherit; text-decoration: none; }
+.vf-glass img { max-width: 100%; height: auto; display: block; }
+
+/* ── Navigation ── */
+.vf-nav-gl {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+  width: calc(100% - 48px); max-width: 1100px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 12px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 100;
+}
+.vf-nav-gl-logo { font-weight: 700; font-size: 16px; color: #fff; }
+.vf-nav-gl-logo span { color: #FF4D00; }
+.vf-nav-gl-links { display: flex; gap: 28px; align-items: center; }
+.vf-nav-gl-link { color: rgba(255,255,255,0.7); font-size: 13px; transition: color 0.2s; }
+.vf-nav-gl-link:hover { color: #fff; }
+.vf-nav-gl-cta {
+  background: rgba(124,58,237,0.6);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(124,58,237,0.4); border-radius: 8px; padding: 7px 18px;
+  color: white; font-size: 13px; font-family: inherit; cursor: pointer; transition: background 0.2s;
+}
+.vf-nav-gl-cta:hover { background: rgba(124,58,237,0.8); }
+
+/* ── Hero ── */
+.vf-hero-gl { padding: 160px 40px 80px; text-align: center; max-width: 800px; margin: 0 auto; }
+.vf-hero-gl-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4);
+  border-radius: 100px; padding: 4px 14px 4px 8px;
+  font-size: 12px; color: rgba(255,255,255,0.8); margin-bottom: 24px;
+}
+.vf-hero-gl-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #7C3AED; box-shadow: 0 0 8px #7C3AED; flex-shrink: 0;
+}
+.vf-hero-gl-title {
+  font-size: clamp(40px, 7vw, 72px); font-weight: 700;
+  letter-spacing: -2px; line-height: 1.05;
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 20px;
+}
+.vf-hero-gl-subtitle {
+  font-size: 17px; color: rgba(255,255,255,0.5);
+  max-width: 500px; margin: 0 auto 36px; line-height: 1.7;
+}
+.vf-hero-gl-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.vf-hero-gl-btn-primary {
+  background: linear-gradient(135deg, #7C3AED, #5B21B6);
+  border: none; border-radius: 12px; padding: 12px 28px;
+  color: white; font-size: 15px; font-weight: 500; font-family: inherit; cursor: pointer;
+  box-shadow: 0 0 30px rgba(124,58,237,0.4); transition: box-shadow 0.3s ease;
+}
+.vf-hero-gl-btn-primary:hover { box-shadow: 0 0 40px rgba(124,58,237,0.6); }
+.vf-hero-gl-btn-secondary {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px; padding: 12px 28px; color: rgba(255,255,255,0.8);
+  font-size: 15px; font-family: inherit; cursor: pointer;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: background 0.2s;
+}
+.vf-hero-gl-btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* ── Stats ── */
+.vf-stats-gl {
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; padding: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 60px;
+}
+.vf-stat-gl { text-align: center; }
+.vf-stat-gl-num { font-size: 32px; font-weight: 700; color: #fff; display: block; }
+.vf-stat-gl-lbl { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ── Projects section ── */
+.vf-projects-gl { max-width: 1200px; margin: 0 auto; padding: 0 40px 80px; }
+.vf-section-header-gl {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.vf-section-label-gl {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
+
+/* ── View toggle ── */
+.view-toggle-container { display: flex; gap: 6px; align-items: center; }
+.view-toggle-btn {
+  width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; cursor: pointer;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); transition: all 0.15s ease;
+}
+.view-toggle-btn svg { fill: rgba(255,255,255,0.5); display: block; }
+.view-toggle-btn.active { background: rgba(124,58,237,0.6); border-color: rgba(124,58,237,0.4); }
+.view-toggle-btn.active svg { fill: #fff; }
+
+/* ── Glass cards ── */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden;
+  transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+}
+.glass-card:hover {
+  background: rgba(255,255,255,0.07); border-color: rgba(124,58,237,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(124,58,237,0.1);
+}
+.glass-card-cover { aspect-ratio: 16/9; overflow: hidden; }
+.glass-card-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.glass-card-cover-placeholder {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(79,70,229,0.2));
+  display: flex; align-items: center; justify-content: center;
+}
+.glass-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.glass-card-title { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.glass-card-desc {
+  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 14px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.glass-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.glass-tag {
+  background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 100px; padding: 3px 10px; font-size: 11px; color: rgba(255,255,255,0.7);
+}
+.glass-card-link {
+  color: #A78BFA; font-size: 13px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 14px;
+  transition: color 0.2s;
+}
+.glass-card-link:hover { color: #fff; }
+
+/* ── Grid / list layout ── */
+#projects-container.view-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+}
+#projects-container.view-list { display: flex; flex-direction: column; gap: 8px; }
+#projects-container.view-list .glass-card {
+  flex-direction: row; border-radius: 12px; padding: 16px;
+  background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06);
+}
+#projects-container.view-list .glass-card:hover {
+  background: rgba(255,255,255,0.06); border-color: rgba(124,58,237,0.2);
+  transform: none; box-shadow: none;
+}
+#projects-container.view-list .glass-card-cover,
+#projects-container.view-list .glass-card-cover-placeholder {
+  width: 120px; height: 80px; aspect-ratio: unset; flex-shrink: 0; border-radius: 8px; overflow: hidden;
+}
+#projects-container.view-list .glass-card-body { padding: 0 0 0 16px; }
+#projects-container.view-list .glass-card-title { font-size: 15px; }
+#projects-container.view-list .glass-card-link { display: none; }
+
+/* ── Tag filter ── */
+.vf-filter-bar-gl { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.vf-filter-btn-gl {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px; padding: 6px 16px; font-size: 13px; color: rgba(255,255,255,0.6);
+  font-family: inherit; cursor: pointer; transition: all 0.2s;
+}
+.vf-filter-btn-gl:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.vf-filter-btn-gl.active { background: rgba(124,58,237,0.4); border-color: rgba(124,58,237,0.5); color: #fff; }
+
+/* ── About ── */
+.vf-about-gl {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px; padding: 60px 40px; margin: 0 40px 60px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.vf-about-gl-heading { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 16px; letter-spacing: -1px; }
+.vf-about-gl-text { color: rgba(255,255,255,0.5); line-height: 1.8; font-size: 15px; }
+.vf-skills-gl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.vf-skill-gl {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 6px 14px; color: rgba(255,255,255,0.7); font-size: 13px;
+}
+
+/* ── Footer ── */
+.vf-footer-gl {
+  border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: rgba(255,255,255,0.4); font-size: 13px; max-width: 1200px; margin: 0 auto;
+}
+.vf-footer-gl-accent { color: #FF4D00; }
+
+/* ── Project page ── */
+.vf-page-gl { max-width: 800px; margin: 0 auto; padding: 120px 40px 80px; }
+.vf-back-gl {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px; padding: 8px 16px; color: rgba(255,255,255,0.7);
+  font-size: 14px; margin-bottom: 40px; transition: background 0.2s;
+}
+.vf-back-gl:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.vf-page-gl-title {
+  font-size: clamp(36px, 6vw, 64px); font-weight: 700; color: #fff;
+  letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.05;
+}
+.vf-page-gl-meta { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.vf-page-gl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px; }
+.vf-page-gl-content {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; padding: 40px; margin-top: 32px;
+  color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.9;
+}
+.vf-prose-gl p { margin-bottom: 1.5rem; }
+.vf-prose-gl h2, .vf-prose-gl h3 {
+  color: #fff; font-weight: 600; letter-spacing: -0.5px; margin-top: 2.5rem; margin-bottom: 1rem;
+}
+.vf-prose-gl h2 { font-size: 28px; }
+.vf-prose-gl h3 { font-size: 22px; }
+.vf-prose-gl a { color: #A78BFA; }
+.vf-prose-gl a:hover { color: #fff; }
+.vf-prose-gl pre, .vf-prose-gl code {
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9);
+  border-radius: 8px; font-family: ui-monospace, Menlo, Monaco, monospace;
+}
+.vf-prose-gl pre { padding: 20px; overflow-x: auto; font-size: 14px; margin: 2rem 0; }
+.vf-prose-gl code { padding: 3px 6px; font-size: 0.9em; }
+.vf-prose-gl blockquote {
+  border-left: 3px solid rgba(124,58,237,0.8); padding-left: 1.5rem;
+  color: rgba(255,255,255,0.5); margin: 2rem 0; font-style: italic;
+}
+.vf-prose-gl hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 3rem 0; }
+.vf-prose-gl .callout {
+  background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(255,255,255,0.1) !important;
+  border-left: 3px solid rgba(124,58,237,0.8) !important; border-radius: 0 8px 8px 0 !important;
+  padding: 12px 16px !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
+/* ── Gallery overrides ── */
+.vf-gallery img { border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+.vf-image-single { display: flex; justify-content: center; margin: 2rem 0; }
+
+@media (max-width: 768px) {
+  .vf-nav-gl { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .glass-card { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .vf-about-gl { grid-template-columns: 1fr; margin: 0 16px 40px; }
+  .vf-projects-gl { padding: 0 16px 60px; }
+  .vf-hero-gl { padding: 120px 24px 60px; }
+  #projects-container.view-list .glass-card-cover,
+  #projects-container.view-list .glass-card-cover-placeholder { display: none; }
+}
+@media (max-width: 640px) {
+  .view-toggle-container { display: none; }
+  #projects-container.view-grid { grid-template-columns: 1fr; }
+}
+.callout { border-radius: 6px; padding: 12px 16px; margin: 16px 0; border-left: 4px solid; }
+.callout-title { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+.callout-icon { font-size: 16px; line-height: 1; }
+.callout-content { font-size: 14px; line-height: 1.6; }
+.callout-note     { background: #f0f4ff; border-color: #3b82f6; color: #1e3a8a; }
+.callout-info     { background: #f0f9ff; border-color: #0ea5e9; color: #0c4a6e; }
+.callout-tip      { background: #f0fdf4; border-color: #22c55e; color: #14532d; }
+.callout-warning  { background: #fffbeb; border-color: #f59e0b; color: #78350f; }
+.callout-danger   { background: #fff1f2; border-color: #ef4444; color: #7f1d1d; }
+.callout-question { background: #faf5ff; border-color: #a855f7; color: #4a1d96; }
+.callout-success  { background: #f0fdf4; border-color: #22c55e; color: #14532d; }
+.callout-failure  { background: #fff1f2; border-color: #ef4444; color: #7f1d1d; }
+.callout-bug      { background: #fff1f2; border-color: #ef4444; color: #7f1d1d; }
+.callout-example  { background: #f8fafc; border-color: #64748b; color: #1e293b; }
+.callout-quote    { background: #f8fafc; border-color: #64748b; color: #1e293b; }
+.callout-abstract { background: #f0f9ff; border-color: #0ea5e9; color: #0c4a6e; }
+
+/* ── Project Gallery ── */
+.vf-gallery-section{margin:2.5rem 0;}
+.vf-gallery-header{display:flex;justify-content:flex-end;align-items:center;margin-bottom:16px;}
+.vf-gallery-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.vf-gallery-toggle{display:flex;gap:6px;align-items:center;}
+.vf-view-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;background:transparent;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s ease;}
+.vf-view-btn svg{fill:rgba(255,255,255,0.5);display:block;}
+.vf-view-btn.active{background:rgba(124,58,237,0.6);border-color:rgba(124,58,237,0.6);}
+.vf-view-btn.active svg{fill:#fff;}
+.vf-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+.vf-gallery-grid .vf-gallery-item{border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:#0D0D1A;}
+.vf-gallery-grid .vf-gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
+.vf-gallery-grid .vf-gallery-item:hover img{transform:scale(1.03);}
+.vf-gallery-grid .vf-img-caption{display:none;}
+.vf-gallery-list{display:flex;flex-direction:column;gap:16px;}
+.vf-gallery-list .vf-gallery-item{display:flex;flex-direction:column;gap:8px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);aspect-ratio:unset;border-radius:0;overflow:visible;}
+.vf-gallery-list .vf-gallery-item img{width:100%;max-height:500px;object-fit:contain;border-radius:8px;background:#0D0D1A;}
+.vf-gallery-list .vf-img-caption{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;font-style:italic;display:block;}
+.vf-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;}
+.vf-lightbox.hidden{display:none;}
+#vf-lb-img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;cursor:default;}
+.vf-lb-close{position:absolute;top:20px;right:24px;background:transparent;border:none;color:white;font-size:28px;cursor:pointer;opacity:0.7;transition:opacity 0.15s;}
+.vf-lb-close:hover{opacity:1;}
+.vf-lb-prev,.vf-lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;font-size:32px;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;}
+.vf-lb-prev:hover,.vf-lb-next:hover{background:rgba(255,255,255,0.2);}
+.vf-lb-prev{left:20px;}
+.vf-lb-next{right:20px;}
+.vf-lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:13px;pointer-events:none;}
+@media(max-width:640px){
+  .vf-gallery-toggle{display:none;}
+  .vf-gallery-grid{grid-template-columns:1fr;}
+  .vf-gallery-list .vf-gallery-item img{max-height:300px;}
+  .vf-lb-prev{width:36px;height:36px;font-size:24px;left:10px;}
+  .vf-lb-next{width:36px;height:36px;font-size:24px;right:10px;}
+}</style>
+</head>
+<body class="vf-glass">
+
+<div class="vf-page-gl">
+  <a href="../index.html" class="vf-back-gl">← Back</a>
+
+  <h1 class="vf-page-gl-title">TTBB Wiki</h1>
+  
+  <div class="vf-page-gl-tags"><span class="glass-tag">ttbb</span></div>
+
+  <div class="vf-page-gl-content">
+    <div class="vf-prose-gl"><h1>Wiki Index</h1></p><p>Catalog of all wiki pages. Updated on every ingest. Read this first when answering queries — use it to identify relevant pages, then drill into them.</p><p><hr></p><p><h2>Pieces</h2></p><p>- [[America the Beautiful (arr. Leavitt)]] — Ward/Bates, arr. John Leavitt, SATB/TTBB; American ideals; separately issued in both voicings
+<p>- [[Ave Maria (Joshua B. Himes)]] — Joshua B. Himes, TTBB/SATB/SSAA; lush homophonic sacred; accessible</p>
+<p>- [[Blood is Blood is Blood]] — TTBB work by PJ Mooney; themes of identity and kinship</p>
+<p>- [[Can We Sing the Darkness to Light]] — Kyle Pederson, TTBB & Piano; peace and compassion; contemporary composition; invites vision of world without war</p>
+<p>- [[Cangia cangia tue voglie]] — early Baroque aria (Fasolo), arr. Tom Shelton for TTB; diction/ornamentation focus; Hinshaw Music</p>
+<p>- [[Deep River]] — Traditional Spiritual (arr. Howard Helvey, others); TTBB; spiritual crossing, liberation; river metaphor; African American traditions</p>
+<p>- [[Do You Hear the People Sing?]] — Schönberg, arr. Ed Lojeski, TTBB; freedom anthem from <em>Les Misérables</em>; multiple voicings available; Hal Leonard</p>
+<p>- [[Does the World Say]] — Kyle Pederson, TB/TTB/TTBB & Piano; empowerment and resilience; flexible voicing; contemporary composition</p>
+<p>- [[An Earth Song]] — Marques L. A. Garrett, TTBB & Piano; Langston Hughes text; celebration of new life and joy; Oakland Gay Men's Chorus commission</p>
+<p>- [[Echo's Histories]] — Dale Trumbore, TTBB; layers with "Echo's Stories" (SSAA) to form composite work</p>
+<p>- [[Esa Einai]] — Kurt Knecht, TTBB; Hebrew Psalm 121; lyrical spiritual</p>
+<p>- [[Every Fire]] — Timothy C. Takach, TTBB; patriotic valor; piano; self-published</p>
+<p>- [[Exsultate Jubilate]] — Kyle Pederson, TTBB & Piano; celebration, gratitude, joy; contemporary composition</p>
+<p>- [[Found Heaven]] — Conan Gray; contemporary pop; queer religious trauma and self-acceptance; considering for Pride As Big As Texas</p>
+<p>- [[Gaudete (Kira Rugen)]] — Kira Rugen arr., TTBB; vivacious carol arrangement; robust</p>
+<p>- [[A Golden Day]] — Patrick Vu; TTBB a cappella; love song, celebration, lyrical; contemporary emerging composer; considering for Women's Voices Queer Strength</p>
+<p>- [[The Green and Salty Days]] — Kathleen Allan, TTBB; Al Pittman poem; memory and deserted place</p>
+<p>- [[Ho Boys Can't Line Em]] — Traditional African American Work Song, arr. Anthony Trecek-King & Leonard De Paur; TTBB a cappella; call-and-response; post-Civil War railroad labor tradition; dynamic rhythmic energy</p>
+<p>- [[I Am Thine (Draw Me Nearer)]] — Traditional hymn, arr. Marques L. A. Garrett, TTBB; faith and spiritual intimacy; contemporary arrangement</p>
+<p>- [[I See His Blood Upon the Rose]] — Timothy Tharaldson, TTBB + baritone solo; a cappella; Christmas/Lenten sacred</p>
+<p>- [[If There Is]] — Dominick DiOrio, TTB; Scottish blessing text; syncopated/rhythmic; Mark Foster/Hal Leonard</p>
+<p>- [[Invocation and Dance]] — David Conte, SATB/TTBB; standard civic repertory; E.C. Schirmer; ACDA Brock Commission</p>
+<p>- [[Joshua Fit the Battle of Jericho]] — Traditional Spiritual (arr. Stacey V. Gibbs); TTBB; faith, triumph; contemporary arrangement; African American traditions</p>
+<p>- [[Keep Going]] — Carlos Cordero, TTBB & Piano; text by Ryan Heller; resilience and love amid difficulty; difficulty 4/5; also available with strings or full orchestra</p>
+<p>- [[Let It Be Me]] — Joy Oladokun; contemporary pop; faith and identity exploration; considering for Pride As Big As Texas</p>
+<p>- [[A Lover Leaves (But Love Does Not)]] — Music by Ash; original TTBB composition; love and loss; considering for Pride As Big As Texas</p>
+<p>- [[Melody]] — Ysaye M. Barnwell; celebrates African American LGBTQ+ traditions; GALA Choruses database; considering for Pride As Big As Texas</p>
+<p>- [[My Heart Be Brave]] — Marques L. A. Garrett, TTBB; resilience and courage; contemporary composition</p>
+<p>- [[My Soul's Been Anchored in the Lord]] — Traditional Spiritual, arr. Marques L. A. Garrett, TTBB; faith and spiritual security; African American traditions</p>
+<p>- [[No Mirrors in My House]] — Ysaye M. Barnwell; SATBB/adaptable TTBB; identity and self-affirmation; African American traditions; research for TTBB potential</p>
+<p>- [[Northern Lights (Gjeilo)]] — Ola Gjeilo, TTBB & Piano; Latin "Pulchra es amica mea" (Song of Solomon); aurora borealis imagery; 4:35; lush contemporary harmonic language</p>
+<p>- [[The Origin of Love]] — Stephen Trask (from Hedwig and the Angry Inch); theatrical, mythological; humor and heart; queer themes; considering for Pride As Big As Texas</p>
+<p>- [[Prayer]] — Ysaye M. Barnwell; SATBB/adaptable TTBB; spirituality and reflection; research for TTBB potential</p>
+<p>- [[03 - TTBB WIKI/wiki/pieces/Requiescat]] — Andrea Ramsey, TTBB; Oscar Wilde text; tender sacred setting</p>
+<p>- [[Revelation]] — Troey Sivan; contemporary pop; about liberation from toxic Christian ideals; considering for Pride As Big As Texas</p>
+<p>- [[Seule O Abbondante Fleur]] — Joshua Mazur, TTBB revised; Rilke poem; colorful contemporary</p>
+<p>- [[The Seven Last Words of the Unarmed]] — Joel Thompson, TTBB; final words of unarmed Black victims; justice/memorial</p>
+<p>- [[Shenandoah]] — Traditional American Folk Song (multiple arrangers); TTBB; river journey, Americana, travel; direct river metaphor paralleling "The River"</p>
+<p>- [[Shir L'Shalom]] — arr. J. David Moore, TTBB & Piano or Guitar; Israeli peace anthem; Yair Rosenblum/Yaakov Rotblit; Denver Gay Men's Chorus recording available</p>
+<p>- [[Since I Laid My Burden Down]] — Kyle Pederson, TTBB; spiritual freedom and liberation; contemporary spiritual composition</p>
+<p>- [[Sing Out My Soul]] — Marques L. A. Garrett, TTBB; William Henry Davies text; joy and spiritual expression; ACDA Eastern Division commission</p>
+<p>- [[Sing We Now of Christmas]] — Kyle Pederson, TTBB & Piano, optional oboe; Christmas celebration; contemporary composition</p>
+<p>- [[Slow Me Down, Lord]] — Linda Spevacek; TTBB; spiritual prayer, mindfulness; contemporary original spiritual; rhythmic energy with contemplative text</p>
+<p>- [[Soon We Will Be Done]] — Kyle Pederson (adapted), TTBB with spoken word solos; African American spiritual; social justice and equity; contemporary arrangement</p>
+<p>- [[Steal Away]] — Traditional Spiritual (arr. Stacey V. Gibbs); TTBB; freedom, liberation, escape; contemporary arrangement; historical/spiritual significance</p>
+<p>- [[Sunday]] — Joy Oladokun; contemporary pop; coming out as visible LGBTQ+ person in church; considering for Pride As Big As Texas</p>
+<p>- [[Sweet Rivers]] — shape-note hymn arr. Unterseher for TTB; strong pianist required; Oxford</p>
+<p>- [[Three Songs of Life]] — Christina Whitten Thomas, TTBB; three Longfellow poems; contemplative arc</p>
+<p>- [[Till the Stars Fall from the Sky]] — Sally K. Albrecht; TTBB; nature-inspired, eternal love, contemplative; lyrical folk-song quality; similar to "The River"</p>
+<p>- [[To My Brother]] — Joseph Gregorio, TTBB; James Clementi letters about brother Tyler; social justice/grief</p>
+<p>- [[United in Purpose]] — Rollo Dilworth, TTBB; civic unity and shared purpose; piano; patriotism & American democracy</p>
+<p>- [[Wanna Die Easy, When I Die]] — Ysaye M. Barnwell; SSAATBB; excellent TTBB potential; mortality, legacy, spirituality; research for TTBB potential</p>
+<p>- [[The Warrior]] — J. Reese Norris, TTBB; dramatic with percussion, spoken dialog, sound effects</p>
+<p>- [[When Christmas Morn is Dawning]] — Kyle Pederson, TTBB & Piano, optional clarinet; Advent/Christmas; contemporary seasonal composition</p>
+<p>- [[Will There Really Be a Morning?]] — Patrick Vu; TTBB a cappella; Emily Dickinson poem; hope, resilience, questioning; contemporary emerging composer</p>
+<p>- [[Winter Song]] — Sara Bareilles & Ingrid Michaelson; duet; melancholy, longing and resilience; considering for Pride As Big As Texas</p>
+<p>- [[The Witching Hour]] — Braeden Ayres, TTB; Dies Irae chant + "double-double, toil and trouble"; fall/Halloween themes</p>
+<p>- [[Would You Harbor Me?]] — Ysaye M. Barnwell; SSAATB; hospitality, acceptance, refuge; potentially LGBTQ+-affirming; research needed</p><p><hr></p><p><h2>Composers</h2></p><p>- [[Marques L. A. Garrett]] — contemporary composer/arranger; Associate Professor at University of North Texas; African American spiritual tradition; optimistic accessible voice</p>
+<p>- [[PJ Mooney]] — contemporary choral composer; lyrical, text-driven writing</p>
+<p>- [[Giovanni Battista Fasolo]] — early Baroque Italian composer; works survive as original arias</p>
+<p>- [[Tom Shelton]] — choral arranger; arr. Fasolo for men's chorus</p>
+<p>- [[Reginald Unterseher]] — choral arranger; shape-note / sacred tradition</p>
+<p>- [[Dominick DiOrio]] — contemporary American; rhythmic, syncopated; Jonathan Palant Choral Series</p>
+<p>- [[Braeden Ayres]] — contemporary; dark dramatic choral; theatrical approach; Dies Irae combinations</p>
+<p>- [[Kira Rugen]] — choral arranger; robust festive arrangements for men's chorus</p>
+<p>- [[Andrea Ramsey]] — contemporary; tender intimate sacred works</p>
+<p>- [[Christina Whitten Thomas]] — contemporary; lyrical contemplative; literary text engagement</p>
+<p>- [[J. Reese Norris]] — contemporary; dramatic theatrical; percussion & sound design integration</p>
+<p>- [[Joshua B. Himes]] — contemporary; accessible sacred; lush homophonic writing</p>
+<p>- [[Joseph Gregorio]] — contemporary; socially engaged; grief and identity themes; Cantus commissions</p>
+<p>- [[Kurt Knecht]] — contemporary; lyrical accessible; soaring melodies; co-founder MusicSpoke</p>
+<p>- [[Dale Trumbore]] — contemporary; innovative composite works; sophisticated voice-leading</p>
+<p>- [[Joshua Mazur]] — contemporary; colorful literary; adaptable across voicings</p>
+<p>- [[Kathleen Allan]] — contemporary; introspective lyrical; memory and place themes</p>
+<p>- [[Joel Thompson]] — contemporary; socially engaged powerful; memorial works; racial justice</p>
+<p>- [[Timothy Tharaldson]] — contemporary; sacred meditative; chorale-based liturgical integration</p>
+<p>- [[David Maddux]] — contemporary TTBB specialist; pop and musical theatre arrangements; theatrical sensibility; holiday music and special projects</p>
+<p>- [[Charlie Beale]] — contemporary arranger; pop and musical theatre; queer-affirming repertoire</p>
+<p>- [[Stuart Beatch]] — contemporary LGBTQ+ composer-arranger; empowerment and queer-affirming works</p>
+<p>- [[Joy Oladokun]] — contemporary LGBTQ+ singer-songwriter; powerful voice addressing faith, identity, resilience</p>
+<p>- [[Ysaye M. Barnwell]] — renowned composer; African American traditions; spirituality, identity, justice; former Sweet Honey in the Rock member</p>
+<p>- [[Pax Ressler]] — transfeminine composer; LGBTQIA+ choral specialist; 10+ years with queer choruses; contemporary spiritual sensibility</p>
+<p>- [[Stacey V. Gibbs]] — African American spiritual arranger; contemporary energy; joy and celebration; women arranger</p>
+<p>- [[Emily Crocker]] — choral arranger; spirituals and traditional music; contemporary treatment; women arranger</p>
+<p>- [[Susan Labarr]] — contemporary composer (b. 1981); lyrical poetic choral works; Missouri Composer Laureate 2012-2013; 23+ published compositions</p>
+<p>- [[Patrick Vu]] — emerging contemporary composer (b. 1998); lyrical expressive voice; ACDA Raymond Brock Prize winner 2023; Carnegie Hall debut 2026</p>
+<p>- [[Sally K. Albrecht]] — prolific women composer; 325+ published works; Director of Choral Publications for Alfred Music; lyrical contemporary folk-influenced</p>
+<p>- [[Linda Spevacek]] — contemporary women composer; original spirituals; rhythmic energy; emotional accessibility</p>
+<p>- [[Kyle Pederson]] — contemporary composer (b. 1971); Minneapolis-based; ACDA Genesis Prize 2020; American Prize in Choral Composition 2019; sacred-secular integration; social justice; hope and compassion</p>
+<p>- [[Rollo Dilworth]] — contemporary American composer/arranger; jazz, gospel, blues; African American traditions; freedom and civic justice themes; Hal Leonard</p>
+<p>- [[Timothy C. Takach]] — contemporary American composer; lyrical, accessible; SATB/TTBB/SSA catalog; self-published / Graphite Publishing</p>
+<p>- [[David Conte]] — contemporary American composer (b. 1955); lyrical, melodic; 150+ works; ACDA Brock Commission 2007; SF Conservatory faculty; E.C. Schirmer</p>
+<p>- [[Ola Gjeilo]] — Norwegian-American composer (b. 1978); one of the most performed contemporary choral composers worldwide; lush sonic-wash harmonic language; sacred Latin texts; nature imagery</p>
+<p>- [[Anthony Trecek-King]] — contemporary American arranger; African American work song and spiritual tradition; dynamic rhythmic arrangements for men's voices</p>
+<p>- [[Carlos Cordero]] — contemporary independent composer; emotionally direct; resilience and hope themes; Graphite Publishing</p>
+<p>- [[J. David Moore]] — contemporary arranger/composer; Fresh Ayre Music founder; folk-influenced world music arrangements; LGBTQ+ choral community connections</p><p><hr></p><p><h2>Concerts</h2></p><p>- [[Pride As Big As Texas]] — TCC 2026; celebration of LGBTQ+ identity in Texas with four-section emotional arc (celebration → joy → emotional depth → empowerment)</p>
+<p>- [[Women's Voices, Queer Strength]] — TCC 2027; celebration of women composers, divas, and legends through gay men's chorus; features pop divas, Broadway, country, spirituals; four-section arc from celebration → identity → transcendence → community</p><p><hr></p><p><h2>Themes</h2></p><p>- [[Men's Chorus — Accessible Repertoire]] — TTB/TB repertoire for smaller forces; musically satisfying without high demands</p>
+<p>- [[Social Justice & Memorial]] — contemporary works addressing systemic injustice, loss, and memorial; powerful statements on equity and racial justice</p>
+<p>- [[Sacred & Spiritual]] — devotional and liturgical works; psalm settings, Marian texts, meditative sacred pieces with accessible writing</p>
+<p>- [[Dramatic & Theatrical]] — contemporary works with theatrical approach: sound design, percussion, spoken elements, extended techniques</p>
+<p>- [[Pride & LGBTQ+ Identity]] — celebration of authentic self, visibility, joy, and community; affirmation of LGBTQ+ identity</p>
+<p>- [[Religious Trauma & Recovery]] — healing from faith-based harm, liberation from toxic religious ideals, reclaiming spirituality</p>
+<p>- [[Resilience & Empowerment]] — survival, resistance, social justice, standing tall in face of adversity; vision for future</p>
+<p>- [[Patriotism & American Democracy]] — TTBB and dual-voicing works engaging Constitution, Declaration, Bill of Rights, and civic freedom themes; sourced from We the People repertoire research</p><p><hr></p><p><h2>Analyses</h2></p><p>- [[September 11 Commemoration Programming — TCC]] — TTBB repertoire recommendations for memorial programming; emotional arc from confrontation through grief toward reflection</p></div>
+  </div>
+</div>
+
+<div id="vf-lightbox" class="vf-lightbox hidden">
+  <button class="vf-lb-close" aria-label="Close">&#x2715;</button>
+  <button class="vf-lb-prev" aria-label="Previous">&#x2039;</button>
+  <button class="vf-lb-next" aria-label="Next">&#x203A;</button>
+  <div class="vf-lb-counter"></div>
+  <img id="vf-lb-img" src="" alt=""/>
+</div>
+<script>
+(function(){
+  var GKEY='vaultfolio-gallery-view';
+  var gc=document.getElementById('vf-gallery-container');
+  var gbtn=document.getElementById('vf-btn-grid');
+  var lbtn=document.getElementById('vf-btn-list');
+  if(!gc)return;
+  function setView(v){
+    if(v==='list'){gc.className='vf-gallery-list';if(gbtn)gbtn.classList.remove('active');if(lbtn)lbtn.classList.add('active');}
+    else{gc.className='vf-gallery-grid';if(gbtn)gbtn.classList.add('active');if(lbtn)lbtn.classList.remove('active');}
+    localStorage.setItem(GKEY,v);
+  }
+  setView(localStorage.getItem(GKEY)==='list'?'list':'grid');
+  if(gbtn)gbtn.addEventListener('click',function(){setView('grid');});
+  if(lbtn)lbtn.addEventListener('click',function(){setView('list');});
+  var lb=document.getElementById('vf-lightbox');
+  var lbImg=document.getElementById('vf-lb-img');
+  var lbCtr=document.querySelector('.vf-lb-counter');
+  var imgs=Array.from(document.querySelectorAll('#vf-gallery-container img'));
+  var cur=0;
+  function openLb(i){cur=i;if(lbImg)lbImg.src=imgs[i].src;if(lbCtr)lbCtr.textContent=(i+1)+' / '+imgs.length;if(lb)lb.classList.remove('hidden');document.body.style.overflow='hidden';}
+  function closeLb(){if(lb)lb.classList.add('hidden');document.body.style.overflow='';}
+  function prev(){cur=(cur-1+imgs.length)%imgs.length;if(lbImg)lbImg.src=imgs[cur].src;if(lbCtr)lbCtr.textContent=(cur+1)+' / '+imgs.length;}
+  function next(){cur=(cur+1)%imgs.length;if(lbImg)lbImg.src=imgs[cur].src;if(lbCtr)lbCtr.textContent=(cur+1)+' / '+imgs.length;}
+  imgs.forEach(function(img,i){img.style.cursor='zoom-in';img.addEventListener('click',function(){openLb(i);});});
+  var closeBtn=document.querySelector('.vf-lb-close');
+  var prevBtn=document.querySelector('.vf-lb-prev');
+  var nextBtn=document.querySelector('.vf-lb-next');
+  if(closeBtn)closeBtn.addEventListener('click',closeLb);
+  if(prevBtn)prevBtn.addEventListener('click',prev);
+  if(nextBtn)nextBtn.addEventListener('click',next);
+  if(lb)lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(!lb||lb.classList.contains('hidden'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')prev();if(e.key==='ArrowRight')next();});
+})();
+</script>
+</body>
+</html>
